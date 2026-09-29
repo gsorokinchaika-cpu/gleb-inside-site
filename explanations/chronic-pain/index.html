@@ -34,20 +34,14 @@ button:not(:disabled),summary { cursor:pointer; }
 .brand i { color:var(--ochre); font-style:normal; }
 .back-link { display:inline-flex; align-items:center; gap:6px; min-height:44px; font-size:13px; color:var(--muted); text-decoration:none; white-space:nowrap; }
 .back-link:hover { color:var(--ink); text-decoration:underline; }
-.intro { padding:38px 0 32px; }
-.eyebrow { font-size:14px; color:var(--muted); margin-bottom:14px; }
-h1 { max-width:760px; font-size:clamp(32px,4.2vw,50px); line-height:1.1; letter-spacing:-.045em; font-weight:750; }
-.lede { max-width:730px; margin-top:20px; font-size:18px; line-height:1.65; color:var(--muted); }
-.pm-comparison { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-block:1px solid var(--rule); }
-.pm-panel { min-width:0; padding:28px 32px 18px 0; }
-.pm-panel + .pm-panel { padding:28px 0 18px 32px; border-left:1px solid var(--rule); }
-.pm-panel-head { min-height:102px; }
-.pm-panel-title { display:flex; align-items:baseline; gap:10px; }
-.pm-step { color:var(--ochre); font-size:14px; font-weight:650; font-variant-numeric:tabular-nums; }
-h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
-.pm-panel-kicker { margin-top:8px; color:var(--muted); font-size:15px; }
-.pm-instruction { margin-top:14px; color:var(--shirt); font-size:14px; font-weight:600; }
-.pm-circuit { display:grid; grid-template-columns:minmax(80px,1fr) minmax(16px,36px) minmax(82px,1fr) minmax(16px,36px) minmax(64px,.8fr); align-items:center; min-height:174px; gap:2px; }
+.intro { padding:38px 0 36px; }
+h1 { font-size:clamp(32px,3.8vw,44px); line-height:1.14; letter-spacing:-.045em; font-weight:750; }
+.pm-comparison { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+.pm-panel { min-width:0; padding:12px 32px 0 0; }
+.pm-panel + .pm-panel { padding:12px 0 0 32px; border-left:1px solid var(--rule); }
+.pm-panel-head { min-height:54px; }
+h2 { font-size:22px; line-height:1.25; font-weight:600; letter-spacing:-.6px; }
+.pm-circuit { display:grid; grid-template-columns:minmax(80px,1fr) minmax(16px,36px) minmax(82px,1fr) minmax(16px,36px) minmax(64px,.8fr); align-items:center; min-height:162px; gap:2px; }
 .pm-node { display:grid; min-width:0; justify-items:center; align-content:center; gap:9px; text-align:center; }
 .pm-receptor-stage { position:relative; display:grid; place-items:center; height:82px; }
 .pm-receptor-button { z-index:1; padding:12px 14px; min-height:48px; border:1px solid var(--shirt); border-radius:5px; background:var(--shirt); color:var(--paper); font-size:15px; font-weight:550; }
@@ -62,7 +56,6 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
 .pm-chip svg { width:37px; height:37px; }
 .pm-chip.is-active,.pm-chip.is-sensitized { color:var(--ochre); border-color:var(--ochre); background:#f2dfbc; }
 .pm-chip.is-sensitized { box-shadow:0 0 0 5px #e9d5b5; }
-.pm-short-label { color:var(--ochre); font-weight:600; }
 .pm-wire { position:relative; height:22px; margin-top:-43px; color:#9b9181; }
 .pm-wire-line { position:absolute; left:0; right:4px; top:50%; height:1px; background:#afa595; }
 .pm-wire-arrow { position:absolute; top:50%; right:0; font-size:22px; line-height:1; transform:translateY(-53%); }
@@ -76,24 +69,13 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
 .pm-lamp.is-on { color:#8b5c20; }
 .pm-lamp.is-on .pm-bulb-glass { fill:#f2c975; filter:drop-shadow(0 0 9px #d8a74b66); }
 .pm-lamp.is-on .pm-bulb-rays { opacity:1; }
-.pm-status { min-height:87px; padding:13px 16px; border-left:2px solid #899391; background:#eee8dd; font-size:15px; line-height:1.55; }
-.pm-status strong { font-weight:650; }
-.pm-status.is-persistent { border-color:var(--ochre); background:#efe0c8; }
-.pm-sensitivity { margin-top:16px; }
-.pm-sensitivity-head { display:flex; justify-content:space-between; gap:12px; color:var(--muted); font-size:12px; }
-#pm-count { font-variant-numeric:tabular-nums; }
-.progress { height:4px; margin-top:8px; overflow:hidden; background:var(--rule); border-radius:2px; }
-.progress-bar { height:100%; background:var(--ochre); transition:width .16s ease; }
-.pm-reset-controls { min-height:57px; padding-top:10px; }
-.pm-reset { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; padding:8px 11px; border:1px solid #a69e8f; border-radius:5px; background:transparent; color:var(--shirt); font-size:13px; }
-.pm-reset:hover { background:#e9dfd0; border-color:var(--shirt); }
-.pm-normal-takeaway { margin-top:16px; max-width:350px; color:var(--muted); font-size:14px; }
-.pm-note { max-width:800px; margin:18px 0 0; color:var(--muted); font-size:13px; line-height:1.7; }
-.takeaway { display:grid; grid-template-columns:.68fr 1fr; gap:44px; padding:32px 0; }
-.takeaway h2 { font-size:26px; max-width:340px; line-height:1.3; }
-.takeaway p { font-size:16px; max-width:620px; }
-.reading { border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); margin-bottom:38px; }
-.reading summary { padding:18px 2px; min-height:56px; font-size:15px; }
+.pm-status { min-height:46px; color:var(--muted); font-size:15px; line-height:1.55; }
+.pm-status.is-persistent { color:var(--ochre); }
+.pm-reset-controls { height:44px; }
+.pm-reset { display:inline-flex; align-items:center; justify-content:center; min-height:44px; min-width:64px; padding:0; border:0; background:transparent; color:var(--muted); font-size:13px; text-decoration:underline; text-underline-offset:4px; }
+.pm-reset:hover { color:var(--ink); }
+.reading { border-top:1px solid var(--rule); margin:24px 0 16px; }
+.reading summary { padding:17px 2px; min-height:56px; font-size:14px; color:var(--muted); }
 .reading summary::marker { font-size:12px; color:var(--ochre); }
 .reading-content { max-width:790px; padding:4px 0 27px; font-size:15px; }
 .reading h3 { margin:17px 0 7px; font-size:17px; letter-spacing:-.2px; }
@@ -102,7 +84,7 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
 .sources li { margin:8px 0; padding-left:3px; }
 .source-date { color:var(--muted); font-size:12px; }
 .noscript { padding:14px 0; font-size:14px; }
-.footer { display:flex; justify-content:space-between; gap:16px; padding:22px 0 30px; color:var(--muted); font-size:12px; border-top:1px solid var(--rule); }
+.footer { padding:12px 0 24px; color:var(--muted); font-size:12px; }
 @keyframes pm-travel { 0%{left:0;opacity:0} 15%,85%{opacity:1} 100%{left:calc(100% - 7px);opacity:0} }
 @keyframes pm-halo { 0%{opacity:.65;transform:scale(.7)} 100%{opacity:0;transform:scale(1.55)} }
 @media (max-width:1000px) {
@@ -110,7 +92,6 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
   .pm-panel { padding-right:22px; }
   .pm-panel + .pm-panel { padding-left:22px; }
   h2 { font-size:21px; }
-  .pm-panel-head { min-height:124px; }
   .pm-receptor-button { padding-inline:10px; font-size:14px; }
 }
 @media (max-width:800px) {
@@ -119,29 +100,18 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
   .brand { font-size:23px; gap:10px; }
   .brand img { width:35px; height:35px; border-radius:6px; }
   .back-link { font-size:12px; }
-  .intro { padding:29px 0 27px; }
-  .eyebrow { font-size:13px; margin-bottom:12px; }
-  h1 { font-size:clamp(32px,6.6vw,42px); max-width:650px; }
-  .lede { margin-top:17px; font-size:16px; }
+  .intro { padding:29px 0 30px; }
+  h1 { font-size:clamp(31px,6.6vw,40px); max-width:650px; }
   .pm-comparison { grid-template-columns:1fr; }
-  .pm-panel,.pm-panel + .pm-panel { padding:24px 0; border-left:0; }
+  .pm-panel,.pm-panel + .pm-panel { padding:18px 0 12px; border-left:0; }
   .pm-panel + .pm-panel { border-top:1px solid var(--rule); }
   .pm-panel-head { min-height:0; }
-  h2 { font-size:22px; }
-  .pm-panel-kicker { font-size:14px; }
-  .pm-instruction { margin-top:12px; font-size:13px; }
+  h2 { font-size:21px; }
   .pm-circuit { max-width:480px; margin:auto; min-height:161px; }
   .pm-receptor-button { font-size:14px; padding-inline:12px; }
-  .pm-status { min-height:0; }
-  .pm-reset-controls { min-height:0; }
-  .pm-normal-takeaway { max-width:none; font-size:13px; margin-top:12px; }
-  .pm-note { font-size:12px; margin-top:16px; }
-  .takeaway { grid-template-columns:1fr; gap:14px; padding:26px 0; }
-  .takeaway h2 { font-size:25px; max-width:none; }
-  .takeaway p { font-size:15px; }
-  .reading { margin-bottom:27px; }
-  .reading summary { font-size:14px; }
-  .footer { flex-direction:column; gap:4px; font-size:11px; padding:20px 0 24px; }
+  .pm-status { font-size:14px; }
+  .reading { margin-top:12px; }
+  .footer { font-size:11px; }
 }
 @media (max-width:359px) {
   .page { width:calc(100% - 36px); }
@@ -155,7 +125,6 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
   .pm-chip { width:61px; height:65px; }
   .pm-lamp { width:61px; }
   .pm-node-caption { font-size:11px; }
-  .pm-status { font-size:14px; padding:12px; }
 }
 @media (prefers-reduced-motion:reduce) {
   *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
@@ -163,7 +132,7 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
 @media print {
   :root { color:#000; background:#fff; }
   .page { width:100%; }
-  .skip,.back-link,.pm-instruction,.pm-reset-controls { display:none; }
+  .skip,.back-link,.pm-reset-controls { display:none; }
   .header { min-height:56px; }
   .intro { padding-block:20px; }
   h1 { font-size:30px; }
@@ -172,8 +141,6 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
   .pm-panel-head { min-height:0; }
   .pm-circuit { max-width:440px; margin:auto; }
   .pm-status { min-height:0; }
-  .takeaway { display:block; padding-block:20px; }
-  .takeaway p { margin-top:12px; }
 }
 </style>
 </head>
@@ -186,20 +153,16 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
     </header>
     <main id="main" tabindex="-1">
       <div class="intro">
-        <p class="eyebrow">Понятная медицина · Боль</p>
         <h1>Почему боль может продолжаться</h1>
-        <p class="lede">У нервной системы может повышаться чувствительность. Сравните два условных сценария — нажимайте на рецепторы.</p>
       </div>
-      <section id="pain-mechanisms-viz" aria-label="Два сценария обработки сигналов" aria-describedby="pm-note">
+      <section id="pain-mechanisms-viz" aria-label="Два сценария обработки сигналов">
         <div class="pm-comparison">
           <section class="pm-panel" aria-labelledby="pm-normal-title">
       <header class="pm-panel-head">
-        <div class="pm-panel-title"><span class="pm-step" aria-hidden="true">01</span><h2 id="pm-normal-title">Защитная боль</h2></div>
-        <p class="pm-panel-kicker">Один сигнал — краткий ответ.</p>
-        <p class="pm-instruction" id="pm-normal-instruction">Нажмите на рецептор один раз.</p>
+        <h2 id="pm-normal-title">Защитная боль</h2>
       </header>
       <div class="pm-circuit" id="pm-normal-circuit">
-        <div class="pm-node"><div class="pm-receptor-stage"><span class="pm-receptor-halo" aria-hidden="true"></span><button type="button" class="pm-receptor-button" id="pm-normal-trigger" aria-label="Рецептор: защитная боль" aria-describedby="pm-normal-instruction" disabled>Рецептор</button></div><span class="pm-node-caption">источник сигнала</span></div>
+        <div class="pm-node"><div class="pm-receptor-stage"><span class="pm-receptor-halo" aria-hidden="true"></span><button type="button" class="pm-receptor-button" id="pm-normal-trigger" aria-label="Рецептор: защитная боль" disabled>Рецептор</button></div><span class="pm-node-caption" aria-hidden="true"></span></div>
         <div class="pm-wire pm-wire-first" aria-hidden="true"><span class="pm-wire-line"></span><span class="pm-wire-pulse"></span><span class="pm-wire-arrow">›</span></div>
         <div class="pm-node"><div class="pm-chip-wrap"><div class="pm-chip" id="pm-normal-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M9.5 4.5A3 3 0 0 0 4 6.2v1.5A3.5 3.5 0 0 0 3 14a4 4 0 0 0 4 5.5c1 0 1.9-.4 2.5-1.1V4.5Z" />
@@ -212,56 +175,50 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
             <path class="pm-bulb-glass" d="M36 15c-13.3 0-24 10.7-24 24 0 8.8 4.7 16.5 11.8 20.7 2.8 1.7 4.2 4.5 4.2 7.3h16c0-2.8 1.4-5.6 4.2-7.3C55.3 55.5 60 47.8 60 39c0-13.3-10.7-24-24-24Z" />
             <path class="pm-bulb-filament" d="m29 47 7 8 7-8M36 55v12" />
             <path class="pm-bulb-base" d="M27 67h18v6H27zM29 78h14M32 83h8" />
-          </svg><span class="pm-node-caption">ощущение боли</span></div>
+          </svg><span class="pm-node-caption">боль</span></div>
       </div>
-      <p class="pm-status" id="pm-normal-status" role="status" aria-live="polite" aria-atomic="true"><strong>Начните с одного нажатия.</strong> Проследите путь сигнала до лампочки.</p>
-      <p class="pm-normal-takeaway">В этом сценарии боль помогает заметить угрозу и затихает после окончания сигнала.</p>
+      <p class="pm-status" id="pm-normal-status" role="status" aria-live="polite" aria-atomic="true">Нажмите один раз.</p>
+      
     </section>
           <section class="pm-panel" aria-labelledby="pm-chronic-title">
       <header class="pm-panel-head">
-        <div class="pm-panel-title"><span class="pm-step" aria-hidden="true">02</span><h2 id="pm-chronic-title">Повышенная чувствительность</h2></div>
-        <p class="pm-panel-kicker">Ответ может сохраняться дольше сигнала.</p>
-        <p class="pm-instruction" id="pm-chronic-instruction">Нажмите 5 раз подряд, затем остановитесь.</p>
+        <h2 id="pm-chronic-title">Повышенная чувствительность</h2>
       </header>
       <div class="pm-circuit" id="pm-chronic-circuit">
-        <div class="pm-node"><div class="pm-receptor-stage"><span class="pm-receptor-halo" aria-hidden="true"></span><button type="button" class="pm-receptor-button" id="pm-chronic-trigger" aria-label="Рецептор: повышенная чувствительность" aria-describedby="pm-chronic-instruction" disabled>Рецептор</button></div><span class="pm-node-caption">источник сигнала</span></div>
+        <div class="pm-node"><div class="pm-receptor-stage"><span class="pm-receptor-halo" aria-hidden="true"></span><button type="button" class="pm-receptor-button" id="pm-chronic-trigger" aria-label="Рецептор: повышенная чувствительность" disabled>Рецептор</button></div><span class="pm-node-caption" aria-hidden="true"></span></div>
         <div class="pm-wire pm-wire-first" aria-hidden="true"><span class="pm-wire-line"></span><span class="pm-wire-pulse"></span><span class="pm-wire-arrow">›</span></div>
         <div class="pm-node"><div class="pm-chip-wrap"><div class="pm-chip" id="pm-chronic-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M9.5 4.5A3 3 0 0 0 4 6.2v1.5A3.5 3.5 0 0 0 3 14a4 4 0 0 0 4 5.5c1 0 1.9-.4 2.5-1.1V4.5Z" />
                 <path d="M14.5 4.5A3 3 0 0 1 20 6.2v1.5a3.5 3.5 0 0 1 1 6.3 4 4 0 0 1-4 5.5c-1 0-1.9-.4-2.5-1.1V4.5Z" />
                 <path d="M9.5 9H8a2 2 0 0 0-2 2M14.5 9H16a2 2 0 0 1 2 2M9.5 14H8a2 2 0 0 0-2 2M14.5 14H16a2 2 0 0 1 2 2" />
-              </svg></div></div><span class="pm-node-caption" id="pm-chip-caption">нервная система</span></div>
+              </svg></div></div><span class="pm-node-caption">нервная система</span></div>
         <div class="pm-wire pm-wire-second" aria-hidden="true"><span class="pm-wire-line"></span><span class="pm-wire-pulse"></span><span class="pm-wire-arrow">›</span></div>
         <div class="pm-node"><svg class="pm-lamp" id="pm-chronic-lamp" viewBox="0 0 72 86" role="img" aria-label="Лампочка боли не горит">
             <path class="pm-bulb-rays" d="M36 3v8M12 13l6 6M60 13l-6 6M4 37h9M68 37h-9" />
             <path class="pm-bulb-glass" d="M36 15c-13.3 0-24 10.7-24 24 0 8.8 4.7 16.5 11.8 20.7 2.8 1.7 4.2 4.5 4.2 7.3h16c0-2.8 1.4-5.6 4.2-7.3C55.3 55.5 60 47.8 60 39c0-13.3-10.7-24-24-24Z" />
             <path class="pm-bulb-filament" d="m29 47 7 8 7-8M36 55v12" />
             <path class="pm-bulb-base" d="M27 67h18v6H27zM29 78h14M32 83h8" />
-          </svg><span class="pm-node-caption">ощущение боли</span></div>
+          </svg><span class="pm-node-caption">боль</span></div>
       </div>
-      <p class="pm-status" id="pm-chronic-status" role="status" aria-live="polite" aria-atomic="true"><strong>Попробуйте серию нажатий.</strong> Затем остановитесь и посмотрите, погаснет ли лампочка.</p>
-      <div class="pm-sensitivity">
-      <div class="pm-sensitivity-head"><span>Нажатия в демонстрации</span><span id="pm-count">0 / 5</span></div>
-      <div class="progress" id="pm-progress" role="progressbar" aria-label="Нажатия в демонстрации" aria-valuenow="0" aria-valuemin="0" aria-valuemax="5" aria-valuetext="0 из 5 нажатий в демонстрации"><div class="progress-bar" id="pm-progress-bar" style="width:0%"></div></div>
-      <div class="pm-reset-controls"><button type="button" class="pm-reset" id="pm-reset" hidden><span aria-hidden="true">↺</span> Сбросить демонстрацию</button></div>
+      <p class="pm-status" id="pm-chronic-status" role="status" aria-live="polite" aria-atomic="true">Нажмите несколько раз подряд.</p>
+      <div hidden>
+      <span id="pm-count">0 / 5</span>
+      <div id="pm-progress" role="progressbar" aria-label="Нажатия в демонстрации" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><div id="pm-progress-bar" style="width:0%"></div></div>
     </div>
+    <div class="pm-reset-controls"><button type="button" class="pm-reset" id="pm-reset" aria-label="Сбросить демонстрацию" hidden>Сбросить</button></div>
     </section>
         </div>
-        <p class="pm-note" id="pm-note">Пять нажатий — условие демонстрации, а не порог развития хронической боли. Кнопка сброса перезапускает пример и не изображает лечение.</p>
       </section>
       <noscript><p class="noscript">Для кнопок нужен JavaScript. Смысл схемы: в первом сценарии после сигнала боль затихает; во втором повышенная чувствительность помогает поддерживать боль даже без новых сигналов от рецептора.</p></noscript>
-      <section class="takeaway" aria-labelledby="takeaway-title">
-        <h2 id="takeaway-title">Боль реальна.<br>Даже когда её трудно объяснить.</h2>
-        <p>Её сила не всегда точно отражает степень повреждения тканей. Повышенная чувствительность — один из возможных механизмов длительной боли. Разобраться в причинах помогает врач.</p>
-      </section>
       <details class="reading">
-        <summary>Что стоит за схемой и на какие источники мы опираемся</summary>
+        <summary>О схеме и источники</summary>
         <div class="reading-content">
+          <p>Это упрощённая модель одного из механизмов хронической боли. Пять нажатий — условие демонстрации, а не порог развития болезни. Сброс перезапускает пример и не изображает лечение.</p>
           <h3>Что такое сенситизация</h3>
           <p>Так называют повышение чувствительности: нервные клетки легче отвечают на сигналы или отвечают сильнее. Изменения возможны и на периферии, и в центральной нервной системе. Здесь показан только один упрощённый сценарий.</p>
           <h3>Что схема упрощает</h3>
           <p>Рецептор передаёт сигнал о потенциально опасном воздействии, а не готовое ощущение боли. Значок мозга условно обозначает обработку сигналов, в которой участвует и спинной мозг. Лампочка обозначает ощущение боли.</p>
-          <p>Боль зависит от биологических, психологических и социальных факторов. Сенситизация не означает «поломку мозга» и сама по себе не определяет диагноз.</p>
+          <p>Боль реальна, и её сила не всегда точно отражает степень повреждения тканей. На неё влияют биологические, психологические и социальные факторы. Сенситизация не означает «поломку мозга» и сама по себе не определяет диагноз.</p>
           <h3>Любая ли хроническая боль устроена так</h3>
           <p>Нет. Хронической называют боль, которая сохраняется или повторяется более трёх месяцев. Она может быть связана с заболеванием или повреждением тканей, поражением нервной системы, изменённой обработкой сигналов; механизмы могут сочетаться. По этой схеме нельзя установить причину боли у конкретного человека.</p>
           <h3>Источники</h3>
@@ -274,7 +231,7 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
         </div>
       </details>
     </main>
-    <footer class="footer"><span>© 2026 Gleb Inside</span><span>Пилот 0.4.0 · Объяснение боли 1.0</span></footer>
+    <footer class="footer"><span>© 2026 Gleb Inside</span></footer>
   </div>
   <script>(() => {
   'use strict';
@@ -291,7 +248,6 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
   const count = find('count');
   const progress = find('progress');
   const bar = find('progress-bar');
-  const caption = find('chip-caption');
   const reset = find('reset');
   // These are interaction timings and a storytelling rule, not clinical parameters.
   const DEMO_TAPS = 5;
@@ -317,9 +273,8 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
       ? `Лампочка боли горит${persistent ? ' и не гаснет после остановки нажатий' : ''}`
       : 'Лампочка боли не горит');
   }
-  function status(item, title, description) {
-    // All copy is fixed author text; no input is accepted from the reader.
-    item.status.innerHTML = `<strong>${title}</strong> ${description}`;
+  function status(item, text) {
+    item.status.textContent = text;
   }
   function pulse(item) {
     item.circuit.classList.remove('is-pulsing');
@@ -344,9 +299,9 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
   normal.trigger.addEventListener('click', () => {
     cancelTimers(normal);
     briefResponse(normal);
-    status(normal, 'Сигнал идёт.', 'В этом примере за ним следует краткий ответ — боль.');
+    status(normal, 'Сигнал идёт.');
     later(normal, 'message', 1750, () => {
-      status(normal, 'Ответ закончился.', 'Лампочка погасла. Нажмите ещё раз, чтобы повторить.');
+      status(normal, 'Сигнал закончился — боль затихла.');
     });
   });
 
@@ -354,7 +309,7 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
     cancelTimers(chronic);
     if (sensitized) {
       pulse(chronic);
-      status(chronic, 'Лампочка продолжает гореть.', 'Остановите нажатия: в этом примере боль сохраняется и без новых сигналов от рецептора.');
+      status(chronic, 'Боль сохраняется без новых сигналов.');
       return;
     }
     taps += 1;
@@ -364,19 +319,17 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
       pulse(chronic);
       chronic.chip.classList.remove('is-active');
       chronic.chip.classList.add('is-sensitized');
-      caption.textContent = 'чувствительность повышена';
-      caption.classList.add('pm-short-label');
       lamp(chronic, true, true);
       chronic.status.classList.add('is-persistent');
-      status(chronic, 'Теперь остановитесь.', 'Лампочка остаётся включённой: боль может сохраняться без новых сигналов от рецептора.');
+      status(chronic, 'Боль сохраняется без новых сигналов.');
       reset.hidden = false;
     } else {
       briefResponse(chronic);
-      status(chronic, `Нажатие ${taps} из ${DEMO_TAPS}.`, 'Продолжайте нажимать подряд, затем сравните результат с первой схемой.');
+      status(chronic, `Ещё ${DEMO_TAPS - taps} ${taps === 4 ? 'нажатие' : 'нажатия'}.`);
       later(chronic, 'gap', GAP_MS, () => {
         taps = 0;
         updateCount();
-        status(chronic, 'Пауза в демонстрации.', 'Счётчик обнулён. Для второго сценария нажмите 5 раз подряд.');
+        status(chronic, 'Попробуйте нажимать чаще.');
       });
     }
   });
@@ -388,11 +341,9 @@ h2 { font-size:23px; line-height:1.25; font-weight:650; letter-spacing:-.65px; }
     chronic.circuit.classList.remove('is-pulsing');
     chronic.chip.classList.remove('is-active', 'is-sensitized');
     chronic.status.classList.remove('is-persistent');
-    caption.textContent = 'нервная система';
-    caption.classList.remove('pm-short-label');
     lamp(chronic, false);
     updateCount();
-    status(chronic, 'Можно повторить.', 'Нажмите 5 раз подряд, затем остановитесь и посмотрите на лампочку.');
+    status(chronic, 'Нажмите несколько раз подряд.');
     reset.hidden = true;
     chronic.trigger.focus();
   });
