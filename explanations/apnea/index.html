@@ -36,49 +36,36 @@ h1,h2,h3,p,figure { margin:0; }
 .eyebrow { font-size:14px; color:var(--muted); margin-bottom:12px; }
 h1 { font-size:clamp(32px,4.1vw,48px); line-height:1.1; letter-spacing:-.045em; font-weight:750; max-width:820px; }
 .demo { max-width:820px; margin:0 auto; }
-.scene { position:relative; }
-#anatomy { display:block; width:100%; height:320px; overflow:visible; }
-#anatomy path, #anatomy use, #anatomy circle, #anatomy rect { stroke-linecap:round; stroke-linejoin:round; }
-.head { fill:#ead8bc; stroke:var(--ink); stroke-width:3; }
-.section-line { fill:none; stroke:#d3bb9a; stroke-width:2; }
-.eye { fill:none; stroke:var(--ink); stroke-width:2.5; }
-.airway { fill:#fbf7ef; stroke:#847d6c; stroke-width:1.6; }
-.nasal-fold { fill:none; stroke:#baa58b; stroke-width:1.8; }
-.hard-palate { fill:none; stroke:#7e7464; stroke-width:2.8; }
-.soft-tissue { fill:#c3967c; stroke:#735b4b; stroke-width:1.7; }
-.tongue { fill:#cda58b; stroke:#7d624f; stroke-width:1.8; }
-.tongue-fold { fill:none; stroke:#aa8269; stroke-width:1.5; }
-.flow-guide { fill:none; stroke:var(--air); stroke-width:2; stroke-opacity:.24; }
-.flow-arrow { fill:none; stroke:var(--air); stroke-width:3.4; }
-.pressure-wash { fill:none; stroke:#cc9b52; stroke-width:37; stroke-opacity:.16; }
-.pressure-arrows { fill:none; stroke:var(--ochre); stroke-width:1.8; }
-.contact { fill:none; stroke:var(--ochre); stroke-width:2; }
-.contact-leader { fill:none; stroke:var(--ochre); stroke-width:1.5; }
-.strap { fill:none; stroke:var(--shirt); stroke-width:5; stroke-opacity:.28; }
-.hose-outline { fill:none; stroke:var(--shirt); stroke-width:14; }
-.hose { fill:none; stroke:#a9b7b4; stroke-width:8; }
-.mask { fill:#c0d2cf; fill-opacity:.62; stroke:var(--shirt); stroke-width:2.6; }
-.mask-seal { fill:none; stroke:var(--shirt); stroke-width:2.7; }
-.connector { fill:#99adaa; stroke:var(--shirt); stroke-width:2; }
-.machine { fill:var(--shirt); stroke:var(--ink); stroke-width:2; }
-.machine-panel { fill:#728581; stroke:var(--shirt); stroke-width:2; }
-.machine-screen { fill:#ced6c9; }
-.machine-dial { fill:#95a6a0; }
-.machine-vents { fill:none; stroke:#a6b5b0; stroke-width:2; }
-.scene-note { min-height:27px; text-align:center; font-size:14px; color:var(--muted); padding:0 10px; }
-.scene-note[data-state="blocked"] { color:var(--ochre); }
-.scene-note[data-state="cpap"] { color:var(--ochre); }
-.state-controls { display:flex; justify-content:center; gap:6px; margin:17px 0 24px; }
-.state-button { min-height:50px; flex:1; max-width:255px; padding:10px 10px; background:transparent; border:0; border-bottom:2px solid var(--rule); color:var(--muted); font-size:16px; line-height:1.4; }
-.state-button[aria-checked="true"] { color:var(--ink); border-color:var(--shirt); font-weight:650; }
-.state-button:hover { color:var(--ink); border-color:var(--shirt); }
+.scene { position:relative; margin:16px auto 18px; }
+.scene:focus:not(:focus-visible) { outline:none; }
+.scene-frame { position:relative; max-width:660px; margin:0 auto; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+#anatomy { display:block; width:100%; height:auto; border-radius:20px; background:#f2e8d6; }
+#anatomy path, #anatomy circle { stroke-linecap:round; stroke-linejoin:round; }
+.flow-guide { fill:none; stroke:var(--air); stroke-width:2.4; stroke-opacity:.28; }
+.flow-arrow { fill:none; stroke:var(--air); stroke-width:4.2; }
+.pressure-wash { fill:none; stroke:#cc9b52; stroke-width:24; stroke-opacity:.12; }
+.pressure-arrows { fill:none; stroke:var(--ochre); stroke-width:2.8; }
+.contact { fill:none; stroke:var(--ochre); stroke-width:3; }
+.contact-leader { fill:none; stroke:var(--ochre); stroke-width:2; }
+.scene-title { margin:17px 0 0; text-align:center; font-size:22px; line-height:1.3; letter-spacing:-.4px; }
+.state-controls { position:absolute; inset:0; pointer-events:none; }
+.carousel-button { position:absolute; top:50%; transform:translateY(-50%); display:grid; place-items:center; width:48px; height:48px; padding:0; border:1px solid var(--rule); border-radius:50%; background:rgba(246,237,223,.94); color:var(--ink); box-shadow:0 2px 8px rgba(37,38,33,.06); pointer-events:auto; }
+.carousel-previous { left:10px; }
+.carousel-next { right:10px; }
+.carousel-button:hover { background:var(--paper); border-color:var(--ochre); color:var(--ochre); }
+.carousel-button svg { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 .caption-wrap { max-width:760px; margin:0 auto; }
 .caption { font-size:20px; line-height:1.6; min-height:96px; }
 .motion-controls { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:15px 0 24px; }
 .motion-button { min-height:46px; display:inline-flex; align-items:center; gap:11px; padding:9px 15px; background:var(--shirt); border:1px solid var(--shirt); color:var(--paper); border-radius:5px; font-size:14px; font-weight:550; }
 .motion-button:hover { background:#2e393a; }
 .motion-button svg { width:14px; height:14px; fill:currentColor; flex:none; }
-.motion-status { color:var(--muted); font-size:13px; text-align:right; }
+.anatomy-context { max-width:760px; margin:8px auto 26px; padding:23px 0 0; border-top:1px solid var(--rule); font-size:16px; }
+.anatomy-context h2 { font-size:22px; line-height:1.3; letter-spacing:-.4px; margin:0 0 15px; }
+.anatomy-context ul { margin:0 0 15px; padding-left:21px; }
+.anatomy-context li { margin:0 0 10px; padding-left:3px; }
+.anatomy-context p { color:var(--muted); font-size:15px; }
 .safety { font-size:13px; color:var(--muted); line-height:1.7; padding:21px 0; border-top:1px solid var(--rule); max-width:760px; margin:auto; }
 .reading { margin:0 auto 42px; max-width:760px; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
 .reading summary { padding:17px 2px; min-height:52px; font-size:15px; }
@@ -103,15 +90,20 @@ h1 { font-size:clamp(32px,4.1vw,48px); line-height:1.1; letter-spacing:-.045em; 
   .intro { padding:30px 0 14px; }
   .eyebrow { font-size:13px; margin-bottom:12px; }
   h1 { font-size:clamp(30px,7.7vw,40px); line-height:1.14; }
-  #anatomy { height:auto; max-height:350px; margin:6px 0 5px; }
-  .scene-note { font-size:12px; min-height:39px; display:flex; align-items:center; justify-content:center; }
-  .state-controls { gap:6px; margin:9px 0 20px; }
-  .state-button { font-size:14px; padding:9px 3px; min-height:60px; max-width:none; }
+  #anatomy { border-radius:14px; }
+  .scene { margin-top:12px; margin-bottom:14px; }
+  .scene-frame { margin:0 -12px; }
+  .scene-title { margin-top:14px; font-size:20px; }
+  .carousel-button { width:44px; height:44px; }
+  .carousel-previous { left:6px; }
+  .carousel-next { right:6px; }
   .caption { font-size:17px; min-height:137px; }
   .motion-controls { padding:14px 0 23px; gap:12px; }
   .motion-button { font-size:13px; padding:9px 12px; white-space:nowrap; }
-  .motion-status { font-size:11px; max-width:130px; }
   .safety { font-size:12px; padding:17px 0; }
+  .anatomy-context { padding-top:20px; font-size:15px; }
+  .anatomy-context h2 { font-size:20px; }
+  .anatomy-context p { font-size:14px; }
   .reading { margin-bottom:28px; }
   .reading summary { font-size:14px; }
   .reading-content { font-size:15px; }
@@ -119,10 +111,8 @@ h1 { font-size:clamp(32px,4.1vw,48px); line-height:1.1; letter-spacing:-.045em; 
 }
 @media (max-width:359px) {
   .page { width:calc(100% - 36px); }
-  .state-button { font-size:13px; }
   .caption { font-size:16px; min-height:154px; }
   .motion-controls { align-items:flex-start; flex-direction:column; gap:8px; }
-  .motion-status { max-width:none; text-align:left; }
 }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
 @media print {
@@ -130,7 +120,8 @@ h1 { font-size:clamp(32px,4.1vw,48px); line-height:1.1; letter-spacing:-.045em; 
   .header { min-height:55px; }
   .intro { padding-top:20px; }
   h1 { font-size:28px; }
-  #anatomy { height:260px; }
+  #anatomy { width:500px; max-width:100%; margin:auto; }
+  .scene-frame { margin:auto; }
   .skip,.state-controls,.motion-controls,.reading summary { display:none !important; }
   .caption { min-height:0; font-size:16px; }
   details.reading::details-content { content-visibility:visible !important; }
@@ -142,7 +133,7 @@ h1 { font-size:clamp(32px,4.1vw,48px); line-height:1.1; letter-spacing:-.045em; 
 
 @media (min-width:1000px) { h1 {font-size:44px;max-width:100%;} h1 br {display:none;} .intro {padding-top:32px;padding-bottom:10px;} }
 
-/* Site integration only: reviewed diagram and controls keep their original styles. */
+/* Navigation shared with the other explanations. */
 .back-link { display:inline-flex; align-items:center; gap:6px; min-height:44px; font-size:13px; color:var(--muted); text-decoration:none; white-space:nowrap; }
 .back-link:hover { color:var(--ink); text-decoration:underline; text-underline-offset:4px; }
 @media (max-width:700px) { .back-link { font-size:12px; gap:5px; } }
@@ -162,97 +153,79 @@ h1 { font-size:clamp(32px,4.1vw,48px); line-height:1.1; letter-spacing:-.045em; 
         <h1>Как СИПАП помогает<br> дышать во сне</h1>
       </div>
       <section class="demo" aria-label="Интерактивное объяснение">
-        <figure class="scene" aria-describedby="caption">
-          <svg id="anatomy" viewBox="100 16 570 475" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="anatomy-title anatomy-description">
-  <title id="anatomy-title">Дыхание свободно — условный разрез головы и шеи</title>
-  <desc id="anatomy-description">Профиль обращён влево. Позади мягкого нёба и языка остаётся открытый проход. Стрелки показывают направление воздуха на вдохе. Схема неподвижна.</desc>
+        <figure id="scene" class="scene" tabindex="0" role="group" aria-roledescription="карусель" aria-label="Состояния дыхательных путей" aria-describedby="caption">
+          <div class="scene-frame">
+            <svg id="anatomy" viewBox="0 0 1000 1000" width="1000" height="1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="anatomy-title anatomy-description">
+  <title id="anatomy-title">Дыхание свободно</title>
+  <desc id="anatomy-description">Анатомический разрез головы и шеи взрослого человека. Просвет позади мягкого нёба и языка открыт, стрелки показывают движение воздуха.</desc>
   <defs>
-    <path id="air-route" d="M 333 273 C 365 257 390 235 434 240 C 472 244 487 264 489 309 C 492 356 488 412 488 455"/>
-    <path id="airway-shape" d="M 328 271 Q 343 267 360 248 C 386 219 414 211 445 216 C 475 221 493 235 499 259 C 507 290 511 326 508 365 L 504 465 L 471 465 L 468 397 C 464 367 453 343 430 328 L 344 322 L 342 302 C 378 288 418 281 446 286 L 460 272 C 435 255 404 260 377 275 L 344 285 L 328 279 Z"/>
-    <clipPath id="airway-clip"><use href="#airway-shape"/></clipPath>
+    <clipPath id="frame-clip"><rect width="1000" height="1000"/></clipPath>
+    <path id="air-route" d="M 737 468 C 714 460 705 454 679 454 L 472 454 C 416 454 387 425 368 448 C 352 471 358 511 366 550 C 379 578 391 611 392 622" data-cpap="M 733 457 L 492 457 C 432 457 401 423 372 443 C 345 461 344 485 348 517 C 351 551 364 576 383 605"/>
   </defs>
-  <!-- Neutral, original sagittal silhouette. It is not a rendition of the author. -->
-  <path class="head" d="M 466 484 L 466 421 C 445 411 428 399 417 385 C 397 390 368 388 353 377 C 342 369 339 355 344 345 L 335 334 Q 325 331 335 321 Q 344 317 335 312 Q 327 309 338 301 L 341 284 L 317 281 Q 302 278 313 262 L 338 225 Q 350 208 349 187 C 346 130 368 76 421 48 C 473 20 535 28 579 64 C 624 101 640 172 625 235 C 617 269 600 302 580 324 L 573 438 L 605 484"/>
-  <path class="section-line" d="M 588 98 C 613 135 616 186 603 223 C 592 253 576 273 560 286"/>
-  <path class="eye" d="M 351 211 Q 364 218 377 210"/>
-  <use href="#airway-shape" class="airway"/>
-  <path class="nasal-fold" d="M 373 257 Q 399 235 426 239 M 387 270 Q 414 253 439 260"/>
-  <path class="hard-palate" d="M 359 293 Q 399 280 432 284"/>
-  <!-- The soft palate is deformed by a small, bounded state model, not clinical coefficients. -->
-  <path id="soft-palate" class="soft-tissue" d="M 381 276 C 407 261 433 259 455 270 C 464 278 469 298 465 311 C 463 319 456 318 453 309 L 444 287 C 425 282 405 282 382 290 Z"/>
-  <path id="tongue" class="tongue" d="M 346 323 C 352 307 376 300 401 305 C 433 310 450 331 463 357 L 467 392 C 447 376 424 366 397 361 C 373 357 353 350 346 335 Z"/>
-  <path class="tongue-fold" d="M 363 332 Q 403 332 433 355"/>
-  <!-- No lungs: preserved effort is stated in the text, not simulated as normal ventilation. -->
-  <g id="pressure" class="pressure" style="display:none" aria-hidden="true" clip-path="url(#airway-clip)">
-    <use href="#air-route" class="pressure-wash"/>
+  <g clip-path="url(#frame-clip)" aria-hidden="true">
+    <g id="airway-free" style="opacity:1"><image href="assets/cpap-airway-states.jpg" width="3000" height="1000" x="0" y="0" preserveAspectRatio="xMinYMin meet"/></g>
+    <g id="airway-blocked" style="opacity:0"><image href="assets/cpap-anatomy-v4.jpg" width="3000" height="1000" x="-1000" y="0" preserveAspectRatio="xMinYMin meet"/></g>
+    <g id="airway-cpap" style="opacity:0"><image href="assets/cpap-anatomy-v4.jpg" width="3000" height="1000" x="-2000" y="0" preserveAspectRatio="xMinYMin meet"/></g>
+  </g>
+  <g id="pressure" style="display:none" aria-hidden="true">
+    <path class="pressure-wash" d="M 348 487 C 348 532 363 571 383 605"/>
     <g class="pressure-arrows">
-      <path d="M 478 325 H 468 M 468 325 l 4 -4 M 468 325 l 4 4 M 497 325 H 508 M 508 325 l -4 -4 M 508 325 l -4 4"/>
-      <path d="M 479 364 H 468 M 468 364 l 4 -4 M 468 364 l 4 4 M 496 364 H 508 M 508 364 l -4 -4 M 508 364 l -4 4"/>
-      <path d="M 477 403 H 468 M 468 403 l 4 -4 M 468 403 l 4 4 M 496 403 H 506 M 506 403 l -4 -4 M 506 403 l -4 4"/>
+      <path d="M 345 502 H 332 m 0 0 l 5 -5 m -5 5 l 5 5 M 353 502 H 366 m 0 0 l -5 -5 m 5 5 l -5 5"/>
+      <path d="M 363 574 H 350 m 0 0 l 5 -5 m -5 5 l 5 5 M 374 574 H 387 m 0 0 l -5 -5 m 5 5 l -5 5"/>
     </g>
   </g>
-  <g id="flow" class="flow" aria-hidden="true" clip-path="url(#airway-clip)">
+  <g id="flow" aria-hidden="true">
     <use href="#air-route" class="flow-guide"/>
-    <!-- Static inhalation arrows work without JavaScript, too. -->
-    <path class="flow-arrow" d="M -8 -4 L 0 0 L -8 4" transform="translate(375 251) rotate(-29)"/>
-    <path class="flow-arrow" d="M -8 -4 L 0 0 L -8 4" transform="translate(470 260) rotate(47)"/>
-    <path class="flow-arrow" d="M -8 -4 L 0 0 L -8 4" transform="translate(490 350) rotate(90)"/>
-    <path class="flow-arrow" d="M -8 -4 L 0 0 L -8 4" transform="translate(488 420) rotate(90)"/>
+    <path class="flow-arrow" d="M -10 -5 L 0 0 L -10 5" transform="translate(635 454) rotate(180)"/>
+    <path class="flow-arrow" d="M -10 -5 L 0 0 L -10 5" transform="translate(465 454) rotate(181)"/>
+    <path class="flow-arrow" d="M -10 -5 L 0 0 L -10 5" transform="translate(359 500) rotate(86)"/>
+    <path class="flow-arrow" d="M -10 -5 L 0 0 L -10 5" transform="translate(388 602) rotate(72)"/>
   </g>
-  <g id="occlusion" style="display:none" aria-hidden="true">
-    <circle class="contact" cx="504" cy="300" r="18"/>
-    <path class="contact-leader" d="M 523 300 H 557"/>
-  </g>
-  <!-- Simplified nasal mask + hose. There are no simulated flow arrows in the hose. -->
-  <g id="cpap" style="display:none" aria-hidden="true">
-    <path class="strap" d="M 350 207 C 423 181 530 183 614 210 M 342 292 Q 450 321 584 307"/>
-    <path class="hose-outline" d="M 218 389 C 278 389 220 269 286 267"/>
-    <path class="hose" d="M 218 389 C 278 389 220 269 286 267"/>
-    <path class="mask" d="M 350 212 Q 332 213 321 231 L 292 252 Q 282 260 292 276 L 310 294 Q 328 304 342 291 L 348 282 L 317 281 Q 302 278 313 262 L 338 225 Z"/>
-    <path class="mask-seal" d="M 350 212 Q 344 235 335 247 M 340 287 L 341 297"/>
-    <rect class="connector" x="279" y="256" width="16" height="23" rx="5"/>
-    <rect class="machine" x="123" y="365" width="104" height="68" rx="13"/>
-    <path class="machine-panel" d="M 140 365 L 149 350 H 200 L 213 365"/>
-    <rect class="machine-screen" x="153" y="375" width="29" height="14" rx="3"/>
-    <circle class="machine-dial" cx="201" cy="383" r="5"/>
-    <path class="machine-vents" d="M 140 408 H 163 M 140 414 H 163"/>
-  </g>
+  <g id="occlusion" style="display:none" aria-hidden="true"><circle class="contact" cx="351" cy="490" r="31"/></g>
 </svg>
 
-          <figcaption id="scene-note" class="scene-note" data-state="free">Проход позади мягкого нёба и языка открыт</figcaption>
+            <div id="state-controls" class="state-controls" role="group" aria-label="Переключить состояние" hidden>
+              <button type="button" id="state-prev" class="carousel-button carousel-previous" aria-label="Предыдущее состояние: С СИПАП" aria-controls="anatomy scene-title caption"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6l-6 6 6 6"/></svg></button>
+              <button type="button" id="state-next" class="carousel-button carousel-next" aria-label="Следующее состояние: Путь перекрыт" aria-controls="anatomy scene-title caption"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+          <figcaption><h2 id="scene-title" class="scene-title" aria-live="polite" aria-atomic="true">Дыхание свободно</h2></figcaption>
         </figure>
-        <div id="state-controls" class="state-controls" role="radiogroup" aria-label="Выбери состояние дыхательных путей" hidden>
-          <button type="button" id="state-free" class="state-button" role="radio" aria-checked="true" data-state="free" tabindex="0" aria-controls="anatomy caption">Дыхание свободно</button>
-          <button type="button" id="state-blocked" class="state-button" role="radio" aria-checked="false" data-state="blocked" tabindex="-1" aria-controls="anatomy caption">Путь перекрыт</button>
-          <button type="button" id="state-cpap" class="state-button" role="radio" aria-checked="false" data-state="cpap" tabindex="-1" aria-controls="anatomy caption">С СИПАП</button>
-        </div>
         <div class="caption-wrap">
-          <p id="caption" class="caption" aria-live="polite" aria-atomic="true">Во сне мышцы расслабляются. Обычно в горле остаётся достаточно места, чтобы воздух проходил.</p>
+          <p id="caption" class="caption">Когда просвет глотки открыт, воздух свободно проходит к лёгким.</p>
           <div id="motion-controls" class="motion-controls" hidden>
             <button type="button" id="motion-button" class="motion-button" aria-controls="anatomy" aria-pressed="false">
               <svg viewBox="0 0 16 16" aria-hidden="true"><path id="motion-icon" d="M 4 2 L 13 8 L 4 14 Z"/></svg>
               <span id="motion-label">Показать дыхание</span>
             </button>
-            <p id="motion-status" class="motion-status">Статичная схема · вдох</p>
           </div>
         </div>
       </section>
       <noscript><p class="noscript">JavaScript выключен. На рисунке показан открытый проход. Все три состояния описаны ниже.</p></noscript>
+      <section class="anatomy-context" aria-labelledby="risk-title">
+        <h2 id="risk-title">Что повышает риск апноэ</h2>
+        <ul>
+          <li><strong>Строение челюсти.</strong> Небольшая нижняя челюсть (микрогнатия) или её смещение назад (ретрогнатия) могут оставлять меньше места для языка и мягких тканей. <a href="#source-2" aria-label="Источник 2">[2]</a></li>
+          <li><strong>Ожирение.</strong> Отложения жира вокруг верхних дыхательных путей могут уменьшать просвет глотки. <a href="#source-4" aria-label="Источник 4">[4]</a></li>
+          <li><strong>Объёмная шея.</strong> Большой обхват шеи связан с повышенным риском. Длина шеи сама по себе не объясняет апноэ. <a href="#source-1" aria-label="Источник 1">[1]</a></li>
+        </ul>
+        <p>Эти особенности могут сочетаться и повышать вероятность апноэ, но по внешности диагноз не ставят. Во время эпизода ткани не вырастают: мышцы расслабляются, язык может смещаться назад, а мягкое нёбо и стенки глотки — сближаться. <a href="#source-1" aria-label="Источник 1">[1]</a> <a href="#source-2" aria-label="Источник 2">[2]</a></p>
+      </section>
       <p class="safety">Учебная схема обструктивного апноэ сна у взрослого. Не показывает тяжесть заболевания и не подбирает лечение.</p>
       <details class="reading" id="reading" open>
         <summary>Прочитать объяснение и посмотреть источники</summary>
         <div class="reading-content">
           <h2>Три состояния — словами</h2>
           <h3>Дыхание свободно</h3>
-          <p>Во сне мышцы расслабляются. Обычно в горле остаётся достаточно места, чтобы воздух проходил. <a href="#source-1" aria-label="Источник 1">[1]</a></p>
+          <p>Когда просвет глотки открыт, воздух свободно проходит к лёгким. <a href="#source-1" aria-label="Источник 1">[1]</a></p>
           <h3>Путь перекрыт</h3>
-          <p>При обструктивном апноэ мягкие ткани перекрывают путь воздуху. Организм продолжает пытаться вдохнуть, но воздух почти или совсем не проходит. <a href="#source-2" aria-label="Источник 2">[2]</a></p>
+          <p>Во сне мышцы, поддерживающие глотку открытой, расслабляются. При обструктивном апноэ её мягкие ткани сближаются и перекрывают проход. Попытки вдоха сохраняются, но воздух почти или совсем не проходит. <a href="#source-2" aria-label="Источник 2">[2]</a></p>
           <h3>С СИПАП</h3>
           <p>СИПАП подаёт воздух под давлением и удерживает дыхательные пути открытыми. Человек продолжает дышать самостоятельно. <a href="#source-2" aria-label="Источник 2">[2]</a> <a href="#source-3" aria-label="Источник 3">[3]</a></p>
           <p class="takeaway">СИПАП не заменяет дыхание — он помогает воздуху пройти.</p>
           <h3>Что здесь упрощено</h3>
-          <p class="limits">Показан один условный участок сужения. Реальные особенности дыхательных путей различаются. Тип лечения, маску и настройки подбирают индивидуально. Это не схема центрального апноэ. <a href="#source-4">[4]</a> <a href="#source-5">[5]</a></p>
-          <p class="limits">Сине-серые стрелки показывают направление воздуха. Неподвижные охристые стрелки в режиме СИПАП обозначают поддержку стенок давлением: они сохраняются и на выдохе. Размеры и темп движения условны. Контур аппарата и выход выдыхаемого воздуха не детализированы.</p>
+          <p class="limits">На рисунках показаны примеры свободного дыхательного пути и его перекрытия. У разных людей в обструкции могут участвовать стенки глотки, мягкое нёбо и ткани у корня языка, иногда на нескольких уровнях. Тип лечения, маску и настройки подбирают индивидуально. Это не схема центрального апноэ. <a href="#source-2">[2]</a> <a href="#source-4">[4]</a> <a href="#source-5">[5]</a> <a href="#source-7">[7]</a></p>
+          <p class="limits">Сине-серые стрелки показывают направление воздуха в носу и глотке. Неподвижные охристые стрелки в режиме СИПАП обозначают поддержку стенок давлением: они сохраняются и на выдохе. Размеры и темп движения условны. Контур аппарата и выход выдыхаемого воздуха не детализированы.</p>
           <p class="limits">Стандартный СИПАП использует комнатный воздух; кислородный баллон в этом модуле не показан. <a href="#source-6">[6]</a></p>
           <h3>Источники</h3>
           <ol class="sources">
@@ -262,15 +235,16 @@ h1 { font-size:clamp(32px,4.1vw,48px); line-height:1.1; letter-spacing:-.045em; 
             <li id="source-4"><a href="https://www.nhlbi.nih.gov/health/sleep-apnea/causes" target="_blank" rel="noopener noreferrer">NHLBI — Sleep Apnea: Causes and Risk Factors</a>. Различие механизмов и особенности дыхательных путей.</li>
             <li id="source-5"><a href="https://aasm.org/clinical-guideline-pap-therapy/" target="_blank" rel="noopener noreferrer">AASM — Clinical practice guideline on PAP therapy, 2019</a>. Подтверждение диагноза и дальнейшее наблюдение.</li>
             <li id="source-6"><a href="https://www.uhnm.nhs.uk/hospitals-and-services/sleep-service/adult-sleep-service/advice-for-current-cpap-patients/" target="_blank" rel="noopener noreferrer">University Hospitals of North Midlands — Advice for Current CPAP Patients</a>. Использование комнатного воздуха.</li>
+            <li id="source-7"><a href="https://pubmed.ncbi.nlm.nih.gov/27784411/" target="_blank" rel="noopener noreferrer">Victores et al., 2017 — Interventional Drug-Induced Sleep Endoscopy</a>. Наблюдение разных уровней и сочетаний обструкции при эндоскопии во время медикаментозного сна.</li>
           </ol>
-          <p class="source-date">Сценарий 0.1 · источники проверены 29.09.2026. Тексты согласованы для прототипа; понятность рисунка подтверждена автором.</p>
+          <p class="source-date">Источники проверены 29.09.2026; механизм обструкции, факторы риска и действие СИПАП повторно сверены 30.09.2026.</p>
         </div>
       </details>
     </main>
-    <footer class="footer"><span>© 2026 Gleb Inside</span><span>Пилот 0.3.1</span></footer>
+    <footer class="footer"><span>© 2026 Gleb Inside</span><span>Пилот 0.3.4</span></footer>
   </div>
   <script>/* Gleb Inside: illustrative state model only. No diagnostic values or patient data.
- * Native SVG, no libraries, network, browser persistence, or external dependencies.
+ * Local medical illustrations with SVG airflow cues; no patient data or external dependencies.
  */
 (() => {
   'use strict';
@@ -282,56 +256,40 @@ h1 { font-size:clamp(32px,4.1vw,48px); line-height:1.1; letter-spacing:-.045em; 
   const states = Object.freeze({
     free: {
       title: 'Дыхание свободно',
-      text: 'Во сне мышцы расслабляются. Обычно в горле остаётся достаточно места, чтобы воздух проходил.',
-      note: 'Проход позади мягкого нёба и языка открыт',
-      desc: 'В условном разрезе головы и шеи виден открытый проход позади мягкого нёба и языка. Стрелки показывают направление воздуха.',
+      text: 'Когда просвет глотки открыт, воздух свободно проходит к лёгким.',
+      desc: 'Анатомический разрез головы и шеи взрослого человека. Просвет позади мягкого нёба и языка открыт, стрелки показывают движение воздуха.',
     },
     blocked: {
       title: 'Путь перекрыт',
-      text: 'При обструктивном апноэ мягкие ткани перекрывают путь воздуху. Организм продолжает пытаться вдохнуть, но воздух почти или совсем не проходит.',
-      note: 'Потока нет. Попытки вдоха сохраняются',
-      desc: 'Мягкие ткани соприкасаются с задней стенкой глотки в одном условном участке. Воздух через этот участок не проходит: стрелки потока скрыты. Попытки вдоха сохраняются. Дыхательные мышцы и лёгкие на этой схеме не изображены.',
+      text: 'Во сне мышцы, поддерживающие глотку открытой, расслабляются. При обструктивном апноэ её мягкие ткани сближаются и перекрывают проход. Попытки вдоха сохраняются, но воздух почти или совсем не проходит.',
+      desc: 'Человек с объёмной шеей и небольшой смещённой назад нижней челюстью в анатомическом разрезе. Мягкие ткани глотки сблизились и сомкнулись, перекрыв проход. Воздушные стрелки скрыты. Попытки вдоха сохраняются; дыхательные мышцы и лёгкие не изображены.',
     },
     cpap: {
       title: 'С СИПАП',
       text: 'СИПАП подаёт воздух под давлением и удерживает дыхательные пути открытыми. Человек продолжает дышать самостоятельно.',
-      note: 'Давление поддерживает проход и на вдохе, и на выдохе',
-      desc: 'Маска соединена шлангом с условным аппаратом СИПАП. Проход открыт. Сине-серые стрелки показывают движение воздуха, охристые стрелки обозначают поддержку стенок давлением в обеих фазах. Контур аппарата не детализирован.',
+      desc: 'Тот же человек с маской, соединённой шлангом с аппаратом СИПАП. Просвет глотки открыт. Сине-серые стрелки показывают движение воздуха, охристые — поддержку мягких тканей давлением и на вдохе, и на выдохе. Контур аппарата не детализирован.',
     },
   });
-  // All paths have identical commands. Only the soft tissues change, not the outer head.
-  const palateOpen = 'M 381 276 C 407 261 433 259 455 270 C 464 278 469 298 465 311 C 463 319 456 318 453 309 L 444 287 C 425 282 405 282 382 290 Z';
-  const palateClosed = 'M 381 276 C 407 261 433 259 455 270 C 474 276 497 284 507 294 C 513 305 506 316 499 311 L 473 296 C 449 285 413 282 382 290 Z';
-  const tongueOpen = 'M 346 323 C 352 307 376 300 401 305 C 433 310 450 331 463 357 L 467 392 C 447 376 424 366 397 361 C 373 357 353 350 346 335 Z';
-  const tongueClosed = 'M 346 323 C 352 307 376 300 401 305 C 438 308 459 329 477 354 L 469 392 C 447 376 424 366 397 361 C 373 357 353 350 346 335 Z';
-  const numberPattern = /-?\d+(?:\.\d+)?/g;
-  const morph = (a, b) => {
-    const aa = a.match(numberPattern).map(Number);
-    const bb = b.match(numberPattern).map(Number);
-    if (aa.length !== bb.length) throw new Error('Incompatible path coordinates');
-    return (t) => {
-      let i = 0;
-      return a.replace(numberPattern, () => (aa[i] + (bb[i] - aa[i++]) * t).toFixed(2));
-    };
-  };
-  const palateAt = morph(palateOpen, palateClosed);
-  const tongueAt = morph(tongueOpen, tongueClosed);
+  // Each anatomical illustration depicts the selected airway state.
   const svg = byId('anatomy');
   const flow = byId('flow');
   const arrows = [...flow.querySelectorAll('.flow-arrow')];
   const route = byId('air-route');
-  const length = route.getTotalLength();
-  const softPalate = byId('soft-palate');
-  const tongue = byId('tongue');
-  const cpap = byId('cpap');
+  const freeRoute = route.getAttribute('d');
+  const cpapRoute = route.getAttribute('data-cpap');
+  let length = route.getTotalLength();
+  const openView = byId('airway-free');
+  const blockedView = byId('airway-blocked');
+  const cpapView = byId('airway-cpap');
   const pressure = byId('pressure');
   const occlusion = byId('occlusion');
-  const note = byId('scene-note');
+  const scene = byId('scene');
+  const previousButton = byId('state-prev');
+  const nextButton = byId('state-next');
+  const stateOrder = Object.keys(states);
   const motionButton = byId('motion-button');
   const motionLabel = byId('motion-label');
   const motionIcon = byId('motion-icon');
-  const motionStatus = byId('motion-status');
-  const buttons = [...document.querySelectorAll('.state-button')];
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   // This clock is an animation parameter, not respiratory-rate modelling.
   const cycleMs = 6000;
@@ -347,33 +305,28 @@ h1 { font-size:clamp(32px,4.1vw,48px); line-height:1.1; letter-spacing:-.045em; 
   function phase() { return (clock % cycleMs) / cycleMs < 0.5 ? 'вдох' : 'выдох'; }
   function refreshControls() {
     if (reduced.matches) {
-      motionLabel.textContent = phase() === 'вдох' ? 'Показать выдох' : 'Показать вдох';
+      motionLabel.textContent = 'Сменить направление';
+      motionButton.setAttribute('aria-label', phase() === 'вдох' ? 'Показать направление воздуха на выдохе' : 'Показать направление воздуха на вдохе');
       motionIcon.setAttribute('d', 'M 2 5 H 11 L 8 2 L 10 2 L 15 6 L 10 10 L 8 10 L 11 7 H 2 Z');
       motionButton.removeAttribute('aria-pressed');
     } else {
       motionLabel.textContent = playing ? 'Пауза' : hasPlayed ? 'Продолжить' : 'Показать дыхание';
+      motionButton.removeAttribute('aria-label');
       motionIcon.setAttribute('d', playing ? 'M 3 2 H 6 V 14 H 3 Z M 10 2 H 13 V 14 H 10 Z' : 'M 4 2 L 13 8 L 4 14 Z');
       motionButton.setAttribute('aria-pressed', String(playing));
     }
-    refreshStatus();
-  }
-  function refreshStatus() {
-    const tag = reduced.matches ? 'Без анимации' : playing ? '' : hasPlayed ? 'Схема на паузе' : 'Статичная схема';
-    const physiology = current === 'blocked' ? 'Проход закрыт' : phase();
-    const status = tag ? `${tag} · ${physiology.toLowerCase()}` : physiology[0].toUpperCase() + physiology.slice(1);
-    if (motionStatus.textContent !== status) motionStatus.textContent = status;
   }
   function draw() {
     svg.dataset.state = current;
     svg.dataset.playing = String(playing);
     svg.dataset.phase = phase();
     svg.dataset.closure = closure.toFixed(3);
-    softPalate.setAttribute('d', palateAt(closure));
-    tongue.setAttribute('d', tongueAt(closure));
+    openView.style.opacity = String(current === 'cpap' ? 0 : 1 - closure);
+    blockedView.style.opacity = String(closure);
+    cpapView.style.opacity = String(current === 'cpap' ? 1 - closure : 0);
     const isOpen = closure < 0.001 && current !== 'blocked';
     // Safety invariant: NEVER draw travelling airflow during closure or reopening.
     flow.style.display = isOpen ? '' : 'none';
-    cpap.style.display = current === 'cpap' ? '' : 'none';
     pressure.style.display = current === 'cpap' && isOpen ? '' : 'none';
     occlusion.style.display = current === 'blocked' && closure > 0.995 ? '' : 'none';
     const value = ((clock % cycleMs) / cycleMs) * 2;
@@ -388,7 +341,6 @@ h1 { font-size:clamp(32px,4.1vw,48px); line-height:1.1; letter-spacing:-.045em; 
       const angle = Math.atan2(p2.y - p.y, p2.x - p.x) * 180 / Math.PI + (direction === -1 ? 180 : 0);
       arrows[i].setAttribute('transform', `translate(${p.x.toFixed(2)} ${p.y.toFixed(2)}) rotate(${angle.toFixed(2)})`);
     }
-    refreshStatus();
   }
   function frame(now) {
     if (!playing || reduced.matches) return;
@@ -414,18 +366,17 @@ h1 { font-size:clamp(32px,4.1vw,48px); line-height:1.1; letter-spacing:-.045em; 
   function selectState(id, updateUrl = true) {
     if (!Object.hasOwn(states, id)) return;
     current = id;
+    route.setAttribute('d', id === 'free' ? freeRoute : cpapRoute);
+    length = route.getTotalLength();
     targetClosure = id === 'blocked' ? 1 : 0;
     if (!playing || reduced.matches) closure = targetClosure;
     byId('caption').textContent = states[id].text;
-    note.textContent = states[id].note;
-    note.dataset.state = id;
-    byId('anatomy-title').textContent = `${states[id].title} — условный разрез головы и шеи`;
+    byId('scene-title').textContent = states[id].title;
+    byId('anatomy-title').textContent = states[id].title;
     byId('anatomy-description').textContent = states[id].desc;
-    for (const b of buttons) {
-      const checked = b.dataset.state === id;
-      b.setAttribute('aria-checked', String(checked));
-      b.tabIndex = checked ? 0 : -1;
-    }
+    const index = stateOrder.indexOf(id);
+    previousButton.setAttribute('aria-label', `Предыдущее состояние: ${states[stateOrder[(index + stateOrder.length - 1) % stateOrder.length]].title}`);
+    nextButton.setAttribute('aria-label', `Следующее состояние: ${states[stateOrder[(index + 1) % stateOrder.length]].title}`);
     if (updateUrl) {
       try { window.history.replaceState(null, '', `#${id}`); }
       catch (_) { /* Some local-file previews restrict history; the controls still work. */ }
@@ -433,20 +384,22 @@ h1 { font-size:clamp(32px,4.1vw,48px); line-height:1.1; letter-spacing:-.045em; 
     draw();
     refreshControls();
   }
-  for (const button of buttons) {
-    button.addEventListener('click', () => selectState(button.dataset.state));
-    button.addEventListener('keydown', (event) => {
-      let i = buttons.indexOf(button);
-      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') i = (i + 1) % buttons.length;
-      else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') i = (i + buttons.length - 1) % buttons.length;
-      else if (event.key === 'Home') i = 0;
-      else if (event.key === 'End') i = buttons.length - 1;
-      else return;
-      event.preventDefault();
-      buttons[i].focus();
-      selectState(buttons[i].dataset.state);
-    });
+  function stepState(direction) {
+    selectState(stateOrder[(stateOrder.indexOf(current) + direction + stateOrder.length) % stateOrder.length]);
   }
+  previousButton.addEventListener('click', () => stepState(-1));
+  nextButton.addEventListener('click', () => stepState(1));
+  scene.addEventListener('keydown', (event) => {
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    let index = stateOrder.indexOf(current);
+    if (event.key === 'ArrowRight') index = (index + 1) % stateOrder.length;
+    else if (event.key === 'ArrowLeft') index = (index + stateOrder.length - 1) % stateOrder.length;
+    else if (event.key === 'Home') index = 0;
+    else if (event.key === 'End') index = stateOrder.length - 1;
+    else return;
+    event.preventDefault();
+    selectState(stateOrder[index]);
+  });
   motionButton.addEventListener('click', () => {
     if (reduced.matches) {
       clock = phase() === 'вдох' ? cycleMs * 0.75 : cycleMs * 0.25;
