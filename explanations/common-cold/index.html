@@ -209,91 +209,48 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   border-radius: 28px;
   box-shadow: var(--shadow);
 }
-.path-card { display: grid; grid-template-columns: 1.05fr .95fr; align-items: stretch; }
+.path-card { display: flex; flex-direction: column; }
 .path-visual {
   min-width: 0;
-  padding: 28px 36px 30px;
+  margin: 0;
+  padding: clamp(20px, 4vw, 38px);
   background: #efe5d5;
-  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
 }
-.path-diagram { display: grid; grid-template-columns: 1fr; align-items: center; max-width: 520px; margin: 0 auto; }
-.anatomy-view { margin: 0; min-width: 0; }
-.anatomy-image { position: relative; max-width: 340px; margin: 0 auto; }
-.anatomy-image img { width: 100%; height: auto; border-radius: 18px; }
-.anatomy-focus { position: absolute; left: 64%; top: 40.5%; width: 12%; aspect-ratio: 1; border: 2px solid #fff5de; outline: 2px solid #94602e; border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 0 5px rgba(255,245,222,.18); }
-.anatomy-view figcaption, .micro-caption { margin: 14px 0 0; color: var(--muted); font-size: .83rem; text-align: center; }
-.anatomy-bridge { align-self: stretch; display: flex; justify-content: center; padding-top: 43%; color: var(--ochre); font-size: 2rem; }
-.anatomy-bridge span { align-self: center; margin-top: -120px; }
-.micro-detail { min-width: 0; }
-.micro-detail svg { width: 100%; height: auto; overflow: visible; }
-.micro-caption { margin-top: 6px; font-weight: 650; }
-.micro-frame { fill: #fbf6ee; stroke: #cdbda7; stroke-width: 3; }
-.submucosa { fill: #d9b89a; }
-.epithelial-cells rect { fill: #d49f7d; stroke: #a96f54; stroke-width: 1.4; }
-.cell-nuclei { fill: #9b665d; opacity: .68; }
-.goblet-cell { fill: #c5aa70; stroke: #927947; stroke-width: 2; }
-.mucus-base { fill: #c9b980; opacity: .68; }
-.mucus-extra { fill: #bba967; opacity: 0; transition: opacity .55s ease; }
-.cilia { fill: none; stroke: #657a68; stroke-width: 2.6; }
-.clearance-arrows { fill: none; stroke: #657e7a; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: .82; transition: opacity .35s ease; }
-.infected-cell { fill: #aa6258; fill-opacity: .84; stroke: #88453f; stroke-width: 2; opacity: 0; transition: opacity .45s ease; }
-.vessel { fill: none; stroke: #b1635a; stroke-width: 10; opacity: .48; }
-.vessel-swollen { fill: none; stroke: #934c41; stroke-width: 25; opacity: 0; transition: opacity .55s ease; }
-.nerve { fill: none; stroke: #b88734; stroke-width: 6; stroke-linecap: round; }
-.virus-particles { fill: #6f5b78; stroke: #6f5b78; stroke-width: 3; opacity: 0; transition: opacity .45s ease; }
-.signals { fill: #9d4e43; opacity: 0; transition: opacity .45s ease; }
-.immune-cells { fill: #6f8579; stroke: #4f655b; stroke-width: 2; opacity: 0; transition: opacity .45s ease; }
-.immune-cells .immune-nucleus { fill: #4f655b; stroke: none; }
-.edema { fill: #d58e79; opacity: 0; transition: opacity .55s ease; }
-.nerve-glow { fill: #dd9f37; opacity: 0; transition: opacity .55s ease; }
-.repair-layer { fill: #718276; opacity: 0; transition: opacity .55s ease; }
-.repair-layer path { fill: none; stroke: #718276; stroke-width: 5; stroke-linecap: round; }
-.path-card[data-step="0"] .virus-particles,
-.path-card[data-step="1"] .virus-particles,
-.path-card[data-step="1"] .infected-cell,
-.path-card[data-step="2"] .virus-particles,
-.path-card[data-step="2"] .infected-cell,
-.path-card[data-step="2"] .signals,
-.path-card[data-step="2"] .immune-cells,
-.path-card[data-step="3"] .virus-particles,
-.path-card[data-step="3"] .infected-cell,
-.path-card[data-step="3"] .signals,
-.path-card[data-step="3"] .immune-cells,
-.path-card[data-step="3"] .mucus-extra,
-.path-card[data-step="3"] .vessel-swollen,
-.path-card[data-step="3"] .edema,
-.path-card[data-step="3"] .nerve-glow,
-.path-card[data-step="4"] .infected-cell,
-.path-card[data-step="4"] .virus-particles,
-.path-card[data-step="4"] .signals,
-.path-card[data-step="4"] .immune-cells,
-.path-card[data-step="4"] .mucus-extra,
-.path-card[data-step="4"] .vessel-swollen,
-.path-card[data-step="4"] .edema,
-.path-card[data-step="4"] .nerve-glow { opacity: 1; }
-.path-card[data-step="5"] .infected-cell { opacity: .18; }
-.path-card[data-step="5"] .virus-particles { opacity: .1; }
-.path-card[data-step="5"] .mucus-extra,
-.path-card[data-step="5"] .vessel-swollen,
-.path-card[data-step="5"] .edema,
-.path-card[data-step="5"] .nerve-glow { opacity: .22; }
-.path-card[data-step="5"] .repair-layer { opacity: 1; }
-.visual-caption { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 16px; margin-top: 16px; color: var(--muted); font-size: .72rem; }
-.path-card[data-step="5"] .visual-caption { visibility: hidden; }
+.onset-image-window {
+  width: min(100%, 700px);
+  aspect-ratio: 3 / 2;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #e7d8c5;
+  border-radius: 18px;
+}
+.onset-image-window img {
+  display: block;
+  width: 200%;
+  max-width: none;
+  height: auto;
+  transform: translate(0, 0);
+  transition: none;
+}
+.path-card[data-step="1"] .onset-image-window img { transform: translate(-50%, 0); }
+.path-card[data-step="2"] .onset-image-window img { transform: translate(0, -50%); }
+.path-card[data-step="3"] .onset-image-window img { transform: translate(-50%, -50%); }
+.micro-caption { margin: 12px 0 0; color: var(--muted); font-size: .78rem; font-weight: 650; text-align: center; }
+.visual-caption { display: flex; flex-wrap: wrap; gap: 7px 14px; margin: 0; color: var(--muted); font-size: .7rem; }
 .visual-caption span { display: inline-flex; align-items: center; gap: 6px; }
 .legend { width: 9px; height: 9px; border-radius: 50%; }
-.virus-dot { background: #6f5b78; }
-.immune-dot { background: #6f8579; }
+.virus-dot { background: #6f5b78; border-radius: 2px; transform: rotate(45deg); }
+.immune-dot { background: #b9a1c2; }
 .vessel-dot { background: #934c41; }
 .nerve-dot { background: #b88734; }
-.path-copy { display: grid; grid-template-columns: 1fr; align-content: space-between; gap: 28px; padding: 34px 40px; }
-.path-description { min-width: 0; }
-.path-description > p:last-child { margin-bottom: 0; color: var(--muted); }
-.path-navigation { min-width: 0; }
-.step-count { margin-bottom: 12px; color: var(--ochre); font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-.path-copy h3 { font-size: clamp(1.6rem, 2.7vw, 2.3rem); }
-.step-dots { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
-.step-dot {
+.path-copy { display: grid; width: min(100%, 760px); gap: 20px; margin: 0 auto; padding: clamp(26px, 4vw, 42px); }
+.path-step-list { display: flex; justify-content: center; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.path-card:not(.is-ready) .path-step-list { display: none; }
+.path-step-list li { margin: 0; }
+.path-step-list button {
+  display: grid;
+  place-items: center;
   width: 44px;
   height: 44px;
   padding: 0;
@@ -303,11 +260,16 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   border-radius: 50%;
   cursor: pointer;
   font-size: .75rem;
-  font-weight: 750;
+  font-weight: 780;
 }
-.step-dot[aria-current="step"] { color: var(--white); background: var(--shirt); border-color: var(--shirt); }
-.path-controls { display: flex; gap: 10px; }
-.path-controls .button { flex: 1; }
+.path-step-list button:hover { border-color: var(--ochre); }
+.path-step-list button:focus-visible { outline: 3px solid rgba(148,96,46,.34); outline-offset: 2px; }
+.path-step-list button[aria-current="step"],
+.path-step-list button[aria-pressed="true"] { color: var(--white); background: var(--shirt); border-color: var(--shirt); }
+.path-description { min-width: 0; }
+.path-description > p:last-child { margin-bottom: 0; color: var(--muted); }
+.path-copy h3 { font-size: clamp(1.6rem, 2.7vw, 2.3rem); }
+.visual-scale-note { margin: -8px 0 0; color: var(--muted); font-size: .68rem; line-height: 1.45; }
 .text-alternative, .model-note { margin: 24px 0 0; padding: 22px 26px; background: rgba(255,255,255,.35); border-radius: 16px; }
 .model-note { color: var(--muted); font-size: .82rem; }
 
@@ -316,9 +278,10 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 .anatomy-context p { margin: 0; color: var(--muted); font-size: .9rem; }
 .anatomy-explorer { display: grid; grid-template-columns: minmax(260px, .58fr) minmax(0, 1.42fr); gap: clamp(28px, 4vw, 48px); align-items: start; }
 .anatomy-map-column { position: sticky; top: 18px; min-width: 0; }
-.atlas-map { margin: 0; overflow: hidden; background: #efe5d5; border: 1px solid var(--rule); border-radius: 24px; box-shadow: var(--shadow); }
-.atlas-stage { position: relative; max-width: 310px; margin: auto; overflow: hidden; }
-.atlas-stage > img { width: 100%; height: auto; }
+.atlas-map { position: relative; z-index: 2; margin: 0; overflow: visible; background: #efe5d5; border: 1px solid var(--rule); border-radius: 24px; box-shadow: var(--shadow); }
+.atlas-stage { position: relative; max-width: 340px; margin: auto; overflow: visible; }
+.atlas-stage > img { width: 100%; height: auto; border-radius: 23px 23px 0 0; }
+.atlas-hotspots { position: absolute; inset: 0; }
 .atlas-map figcaption { padding: 13px 18px 15px; color: var(--muted); background: rgba(255,253,248,.72); border-top: 1px solid var(--rule); font-size: .73rem; line-height: 1.45; }
 .atlas-hotspot {
   position: absolute;
@@ -328,45 +291,59 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   height: 44px;
   padding: 0;
   color: var(--ink);
-  background: rgba(255,253,248,.94);
-  border: 2px solid var(--ochre);
+  background: transparent;
+  border: 0;
   border-radius: 50%;
-  box-shadow: 0 4px 14px rgba(50,38,24,.2);
   cursor: pointer;
   transform: translate(-50%, -50%);
-  transition: color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  z-index: 1;
 }
-.atlas-hotspot:hover { transform: translate(-50%, -50%) scale(1.06); }
-.atlas-hotspot[aria-pressed="true"] { color: var(--white); background: var(--shirt); border-color: var(--shirt); box-shadow: 0 0 0 4px rgba(246,237,223,.94), 0 0 0 7px var(--ochre), 0 6px 18px rgba(50,38,24,.24); }
-.atlas-hotspot span { font-size: .78rem; font-weight: 850; }
+.anatomy-explorer.is-ready .atlas-hotspot { display: grid; }
+.atlas-hotspot:hover, .atlas-hotspot:focus-visible { z-index: 5; }
+.atlas-hotspot:focus-visible { outline: 3px solid rgba(198,117,45,.52); outline-offset: 0; }
+.hotspot-dot {
+  width: 19px;
+  height: 19px;
+  background: rgba(255,253,248,.96);
+  border: 2px solid var(--ochre);
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(50,38,24,.28);
+  transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+.atlas-hotspot:hover .hotspot-dot { transform: scale(1.12); }
+.atlas-hotspot[aria-selected="true"] .hotspot-dot { background: var(--shirt); border-color: #fff8ed; box-shadow: 0 0 0 3px var(--ochre), 0 4px 12px rgba(50,38,24,.3); }
+.hotspot-tooltip {
+  position: absolute;
+  top: calc(100% - 2px);
+  left: 50%;
+  width: max-content;
+  max-width: 170px;
+  padding: 5px 8px;
+  color: var(--white);
+  background: rgba(37,38,33,.94);
+  border-radius: 7px;
+  box-shadow: 0 5px 14px rgba(37,38,33,.18);
+  font-size: .68rem;
+  font-weight: 720;
+  line-height: 1.25;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -3px);
+  transition: opacity .16s ease, transform .16s ease;
+  visibility: hidden;
+}
+.atlas-hotspot:hover .hotspot-tooltip,
+.atlas-hotspot:focus-visible .hotspot-tooltip,
+.atlas-hotspot[aria-selected="true"] .hotspot-tooltip { opacity: 1; transform: translate(-50%, 0); visibility: visible; }
+.hotspot-nose .hotspot-tooltip { left: 0; transform: translate(0, -3px); }
+.hotspot-nose:hover .hotspot-tooltip,
+.hotspot-nose:focus-visible .hotspot-tooltip,
+.hotspot-nose[aria-selected="true"] .hotspot-tooltip { transform: translate(0, 0); }
 .hotspot-nose { left: 15%; top: 39%; }
 .hotspot-ear { left: 57%; top: 39%; }
 .hotspot-throat { left: 33%; top: 54%; }
 .hotspot-larynx { left: 39%; top: 66%; }
 .hotspot-neck { left: 58%; top: 61%; }
-.region-tabs { display: none; grid-template-columns: 1fr; gap: 6px; margin-top: 12px; }
-.anatomy-explorer.is-ready .region-tabs { display: grid; }
-.anatomy-explorer.is-ready .atlas-hotspot { display: grid; }
-.region-tabs button {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 44px;
-  padding: 10px 13px;
-  color: var(--muted);
-  background: rgba(255,255,255,.35);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: .88rem;
-  font-weight: 750;
-  line-height: 1.2;
-  text-align: left;
-}
-.region-tabs button:last-child { grid-column: auto; }
-.region-tabs button span { flex: 0 0 auto; color: var(--ochre); font-size: .64rem; letter-spacing: .08em; }
-.region-tabs button[aria-selected="true"] { color: var(--white); background: var(--shirt); border-color: var(--shirt); }
-.region-tabs button[aria-selected="true"] span { color: #e5bd8b; }
 .region-panels { min-width: 0; }
 .region-panel { margin-bottom: 24px; padding: clamp(24px, 3vw, 36px); background: rgba(255,253,248,.62); border: 1px solid var(--rule); border-radius: 24px; box-shadow: var(--shadow); }
 .region-panel[hidden] { display: none; }
@@ -404,6 +381,25 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 .region-facts p { margin-bottom: 10px; color: var(--muted); font-size: .96rem; line-height: 1.55; }
 .region-facts p:last-child { margin-bottom: 0; }
 .region-facts strong { color: var(--ink); }
+.region-disclosures { border-top: 1px solid var(--rule); }
+.region-disclosure { border-bottom: 1px solid var(--rule); }
+.region-disclosure > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28px;
+  gap: 4px 16px;
+  align-items: center;
+  padding: 18px 0;
+  cursor: pointer;
+  list-style: none;
+}
+.region-disclosure > summary::-webkit-details-marker { display: none; }
+.region-disclosure > summary::after { content: "+"; grid-row: 1 / span 3; grid-column: 2; color: var(--ochre); font-size: 1.35rem; text-align: center; }
+.region-disclosure[open] > summary::after { content: "−"; }
+.region-disclosure > summary .fact-kind { justify-self: start; margin: 0 0 4px !important; }
+.disclosure-title { grid-column: 1; font-family: Georgia, "Times New Roman", serif; font-size: 1.35rem; font-weight: 600; line-height: 1.2; }
+.region-disclosure > summary small { grid-column: 1; color: var(--muted); font-size: .78rem; line-height: 1.4; }
+.region-disclosure-body { padding: 2px 0 26px; }
+.region-disclosure-body > p { max-width: 760px; }
 .fact-kind { display: inline-flex; align-items: center; min-height: 24px; margin-bottom: 12px !important; padding: 4px 8px; border-radius: 999px; font-size: .61rem !important; font-weight: 820; letter-spacing: .06em; line-height: 1.2 !important; text-transform: uppercase; }
 .fact-kind.usual { color: #42584b; background: #dce7dd; }
 .fact-kind.related { color: #596164; background: #e1e5e5; }
@@ -432,6 +428,7 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 .cough-sequence li { border-bottom: 1px solid var(--rule); }
 .cough-sequence button { display: grid; grid-template-columns: 36px 1fr; gap: 14px; width: 100%; padding: 20px 14px; border: 0; border-radius: 12px; color: var(--ink); background: transparent; text-align: left; cursor: pointer; }
 .cough-sequence button[aria-pressed="true"] { background: rgba(255,253,248,.8); box-shadow: inset 3px 0 var(--ochre); }
+.cough-mechanism.is-ready [data-cough-step][aria-expanded="false"] .cough-step-copy { display: none; }
 .cough-step-number { display: grid; place-items: center; align-self: start; width: 34px; height: 34px; color: var(--white); background: var(--shirt); border-radius: 50%; font-size: .68rem; font-weight: 840; }
 .cough-sequence strong { display: block; margin-bottom: 7px; font-size: .98rem; font-weight: 800; line-height: 1.35; }
 .cough-step-copy { display: block; color: var(--muted); font-size: .95rem; line-height: 1.55; }
@@ -460,17 +457,17 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 
 .treatment-card { margin-bottom: 24px; }
 .symptom-tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 6px;
   padding: 12px;
-  overflow-x: auto;
   background: var(--paper-deep);
   border-bottom: 1px solid var(--rule);
 }
 .symptom-tabs button {
-  flex: 1 0 auto;
+  min-width: 0;
   min-height: 44px;
-  padding: 9px 15px;
+  padding: 9px 10px;
   color: var(--muted);
   background: transparent;
   border: 1px solid transparent;
@@ -503,7 +500,10 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 .symptom-level { width: 84%; background: #d69b74; }
 .infection-level { width: 72%; background: #8ea69c; }
 .treatment-card.is-relieved .symptom-level { width: 35%; }
+.treatment-card.is-relieved[data-treatment="cough"] .symptom-level { width: 65%; }
+.treatment-card.is-relieved[data-treatment="throat"] .symptom-level { width: 50%; }
 .treatment-card.is-relieved .infection-level { width: 72%; }
+.effect-note { margin: 22px 0 0; color: #d2dad6; font-size: .72rem; line-height: 1.45; }
 .medicine-safety { display: grid; grid-template-columns: .32fr .68fr; gap: 32px; padding: 28px 30px; border: 1px solid var(--rule); border-radius: 16px; }
 .medicine-safety h3, .medicine-safety p { margin-bottom: 0; }
 .medicine-safety p { color: var(--muted); font-size: .92rem; }
@@ -543,16 +543,39 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 .tissue-icon::after { bottom: 12px; background: #a87759; }
 .cough-icon { color: #d8b385; border-color: #d8b385; font-size: 1.55rem; }
 .recovery-arrow { display: block; margin: 6px 0 6px 22px; color: #d8b385; font-size: 1rem; }
-.recovery-copy h3 { margin: 28px 0 8px; }
-.recovery-copy h3:first-child { margin-top: 0; }
 .recovery-copy p { color: var(--muted); }
+.recovery-disclosures { border-top: 1px solid var(--rule); }
+.recovery-disclosure { border-bottom: 1px solid var(--rule); }
+.recovery-disclosure > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28px;
+  gap: 5px 14px;
+  align-items: center;
+  min-height: 82px;
+  padding: 16px 0;
+  cursor: pointer;
+  list-style: none;
+}
+.recovery-disclosure > summary::-webkit-details-marker { display: none; }
+.recovery-disclosure > summary::after { content: "+"; grid-row: 1 / span 2; grid-column: 2; color: var(--ochre); font-size: 1.35rem; text-align: center; }
+.recovery-disclosure[open] > summary::after { content: "−"; }
+.recovery-disclosure > summary span { font-family: Georgia, "Times New Roman", serif; font-size: 1.28rem; font-weight: 600; line-height: 1.25; }
+.recovery-disclosure > summary small { color: var(--muted); font-size: .78rem; line-height: 1.4; }
+.recovery-disclosure > div { padding: 0 34px 20px 0; }
+.recovery-disclosure > div p { margin-bottom: 0; }
 .caution-inline { display: block; margin-top: 42px; padding: 22px 26px; background: var(--red-light); border-left: 4px solid var(--red); border-radius: 0 14px 14px 0; }
 
-.reason-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
-.reason-grid article { grid-column: span 2; min-height: 250px; padding: 26px; background: rgba(255,255,255,.38); border: 1px solid var(--rule); border-radius: 18px; }
-.reason-grid article:nth-child(4), .reason-grid article:nth-child(5) { grid-column: span 3; }
-.reason-grid article > span { display: block; margin-bottom: 42px; color: var(--ochre); font-size: .72rem; font-weight: 800; }
-.reason-grid article p { margin-bottom: 0; color: var(--muted); font-size: .9rem; }
+.reason-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.reason-disclosure { padding: 0 20px; background: rgba(255,255,255,.38); border: 1px solid var(--rule); border-radius: 16px; }
+.reason-disclosure:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.reason-disclosure > summary { display: grid; grid-template-columns: 32px minmax(0, 1fr) 24px; gap: 12px; align-items: center; min-height: 70px; cursor: pointer; list-style: none; }
+.reason-disclosure > summary::-webkit-details-marker { display: none; }
+.reason-disclosure > summary::after { content: "+"; grid-column: 3; color: var(--ochre); font-size: 1.3rem; text-align: center; }
+.reason-disclosure[open] > summary::after { content: "−"; }
+.reason-number { color: var(--ochre); font-size: .68rem; font-weight: 820; letter-spacing: .06em; }
+.reason-title { font-family: Georgia, "Times New Roman", serif; font-size: 1.15rem; font-weight: 600; line-height: 1.25; }
+.reason-disclosure > div { padding: 0 36px 18px 44px; }
+.reason-disclosure > div p { margin-bottom: 0; color: var(--muted); font-size: .88rem; }
 .self-check { display: grid; grid-template-columns: .65fr 1.35fr; gap: 54px; margin-top: 24px; padding: 38px; background: var(--paper-deep); border-radius: var(--radius); }
 .self-check p { color: var(--muted); }
 .self-check ol { margin: 0; padding-left: 24px; }
@@ -603,20 +626,14 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   .wide-heading { gap: 16px; align-items: start; }
   .section { padding: 88px 0; }
   .section-heading { margin-bottom: 38px; }
-  .path-card { grid-template-columns: 1fr; }
   .path-visual { padding: 24px; }
-  .path-visual { border-right: 0; border-bottom: 1px solid var(--rule); }
   .anatomy-explorer, .cough-mechanism { grid-template-columns: 1fr; }
-  .anatomy-map-column { position: static; display: grid; grid-template-columns: minmax(220px, .9fr) minmax(0, 1.1fr); align-items: center; gap: 20px; }
-  .region-tabs { margin: 0; }
-  .region-tabs button { min-height: 52px; }
+  .anatomy-map-column { position: static; display: block; width: min(100%, 340px); margin: 0 auto 34px; }
   .cough-anatomy { max-width: 620px; margin: 0 auto; width: 100%; }
-  .path-copy { grid-template-columns: 1fr; gap: 24px; }
+  .path-copy { gap: 20px; }
   .treatment-panel { grid-template-columns: 1fr; }
   .effect-visual { min-height: 330px; }
   .medicine-safety { grid-template-columns: 1fr; gap: 8px; }
-  .reason-grid article { grid-column: span 3; }
-  .reason-grid article:nth-child(5) { grid-column: 2 / span 4; }
 }
 
 @media (max-width: 680px) {
@@ -638,20 +655,11 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   .path-card, .treatment-card { border-radius: 20px; }
   .voice-mechanism { padding: 26px 22px; border-radius: 20px; }
   .path-visual { padding: 20px 16px; }
-  .path-diagram { grid-template-columns: 1fr; gap: 0; }
-  .anatomy-image { max-width: 235px; }
-  .anatomy-bridge { padding: 0; height: 42px; }
-  .anatomy-bridge span { margin: 0; transform: rotate(90deg); }
-  .micro-detail { width: 100%; max-width: 500px; margin: 0 auto; }
   .visual-caption { gap: 7px 12px; margin-top: 18px; }
   .path-copy { padding: 30px 24px; }
   .path-copy h3 { min-height: 0; }
-  .step-dots { margin: 22px 0; }
-  .step-dot { width: 44px; height: 44px; }
   .anatomy-map-column { display: block; }
   .atlas-stage { max-width: 290px; }
-  .region-tabs { grid-template-columns: 1fr 1fr; margin-top: 14px; }
-  .region-tabs button { min-height: 48px; padding: 10px; font-size: .8rem; }
   .region-panel { padding: 24px 18px; }
   .anatomy-context { margin-top: -16px; }
   .comparison-labels { gap: 12px; }
@@ -659,8 +667,7 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   .comparison-labels strong { font-size: .8rem; }
   .region-facts p, .region-alert { font-size: .94rem; }
   .cough-marker { width: 28px; height: 28px; border-width: 2px; font-size: .64rem; }
-  .path-controls { flex-direction: column-reverse; }
-  .symptom-tabs button { flex-basis: 46%; }
+  .symptom-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .treatment-copy, .effect-visual { padding: 30px 24px; }
   .effect-row { grid-template-columns: 78px 1fr; }
   .evidence-list summary { grid-template-columns: 1fr 24px; gap: 6px 14px; min-height: 94px; }
@@ -668,10 +675,7 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   .evidence-list summary::after { grid-row: 1 / span 2; grid-column: 2; }
   .recovery-visual, .self-check, .warning-pattern { padding: 26px 22px; }
   .reason-grid { grid-template-columns: 1fr; }
-  .reason-grid article,
-  .reason-grid article:nth-child(4),
-  .reason-grid article:nth-child(5) { grid-column: auto; min-height: 0; }
-  .reason-grid article > span { margin-bottom: 26px; }
+  .reason-disclosure:last-child:nth-child(odd) { grid-column: auto; }
   .self-check { gap: 18px; }
   .help-grid { grid-template-columns: 1fr; }
   .memo { grid-template-columns: 1fr; margin-bottom: 62px; padding: 32px 24px; }
@@ -685,7 +689,9 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   .brand img { width: 30px; height: 30px; }
   .back-link { max-width: 92px; white-space: normal; line-height: 1.2; }
   .visual-caption span { font-size: .65rem; }
-  .symptom-tabs button { flex-basis: 80%; }
+  .symptom-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 9px; }
+  .symptom-tabs button { min-height: 40px; padding: 7px 8px; font-size: .75rem; }
+  .symptom-tabs button:last-child { grid-column: 1 / -1; }
   .voice-labels { gap: 16px; padding: 0 16px; }
 }
 
@@ -701,7 +707,7 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 @media print {
   body { background: #fff; color: #000; font-size: 11pt; }
   .page { width: auto; margin: 0 14mm; }
-  .skip, .back-link, .hero-actions, .section-nav, .path-controls, .symptom-tabs, .treatment-action, .memo-download, .region-tabs, .atlas-hotspot { display: none !important; }
+  .skip, .back-link, .hero-actions, .section-nav, .path-step-list, .symptom-tabs, .treatment-action, .memo-download, .atlas-hotspots { display: none !important; }
   .anatomy-explorer, .anatomy-map-column, .cough-mechanism { display: block; }
   .anatomy-map-column { position: static; max-width: 280px; margin: auto; }
   .region-panel[hidden] { display: block !important; }
@@ -712,20 +718,14 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   .hero { min-height: auto; padding: 18mm 0 12mm; }
   .section { padding: 14mm 0; break-inside: avoid; }
   .path-card, .treatment-card, .memo { box-shadow: none; break-inside: avoid; }
-  .path-card { grid-template-columns: 1fr; }
   .path-visual { padding: 8mm; }
-  .path-card[data-step] .virus-particles,
-  .path-card[data-step] .infected-cell,
-  .path-card[data-step] .signals,
-  .path-card[data-step] .immune-cells,
-  .path-card[data-step] .mucus-extra,
-  .path-card[data-step] .vessel-swollen,
-  .path-card[data-step] .edema,
-  .path-card[data-step] .nerve-glow,
-  .path-card[data-step] .repair-layer { opacity: 1; }
   .treatment-panel, .definition-grid, .wide-heading, .voice-layout, .recovery-grid, .help-grid, .memo { grid-template-columns: 1fr; }
   .effect-visual, .warning-pattern, .memo, .emergency { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .evidence-list details > div { display: block; }
+  .evidence-list details > div,
+  .region-disclosure > div,
+  .recovery-disclosure > div,
+  .reason-disclosure > div,
+  .cough-step-copy { display: block !important; }
   a { color: #000; }
   .footer { min-height: 18mm; }
 }
@@ -744,10 +744,6 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
         <p class="kicker">Материал для взрослых</p>
         <h1 id="hero-title">Вы заболели.<br>Что происходит и как с этим справиться</h1>
         <p class="hero-lead">Респираторный вирус попадает на слизистую, заражает часть клеток и запускает воспалительную реакцию. Разберём этот путь, а затем посмотрим, почему одна инфекция может по-разному ощущаться в носу, ушах, горле, гортани и шее.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#inside">Проследить путь вируса <span aria-hidden="true">↓</span></a>
-          <a class="button quiet" href="#help">Когда нужен врач</a>
-        </div>
         <p class="scope-note">Учебное объяснение, а не диагностика. Рекомендации для детей и беременных отличаются.</p>
       </section>
 
@@ -790,98 +786,33 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
         </div>
 
         <div class="path-card" id="path-card" data-step="0">
-          <div class="path-visual">
-            <div class="path-diagram">
-              <div class="micro-detail">
-            <svg viewBox="0 0 560 452" aria-hidden="true">
-              <defs>
-                <linearGradient id="micro-lumen" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#fffaf2"/>
-                  <stop offset="1" stop-color="#eadfce"/>
-                </linearGradient>
-                <linearGradient id="tissue" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#e9c5a8"/>
-                  <stop offset="1" stop-color="#d4a486"/>
-                </linearGradient>
-                <filter id="soft-glow" x="-100%" y="-100%" width="300%" height="300%">
-                  <feGaussianBlur stdDeviation="6" result="blur"/>
-                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-                <clipPath id="mucosa-window"><rect x="0" y="0" width="520" height="420" rx="26"/></clipPath>
-              </defs>
-
-              <g class="micro-view" transform="translate(20 16)">
-                <rect class="micro-frame" x="0" y="0" width="520" height="420" rx="26"/>
-                <g clip-path="url(#mucosa-window)">
-                  <rect class="micro-lumen" x="0" y="0" width="520" height="190" fill="url(#micro-lumen)"/>
-                  <rect class="submucosa" x="0" y="286" width="520" height="134" fill="url(#tissue)"/>
-                  <path class="vessel" d="M-18 360c66-47 132 22 201-12s130-26 197 5 111 18 158-11"/>
-                  <path class="vessel-swollen" d="M-18 360c66-47 132 22 201-12s130-26 197 5 111 18 158-11"/>
-                  <path class="nerve" d="M29 406c48-41 92-25 133-61s91-23 135 16 92 27 126-12 67-42 111-14"/>
-                  <g class="nerve-glow" filter="url(#soft-glow)"><circle cx="297" cy="361" r="13"/><circle cx="423" cy="349" r="11"/></g>
-                  <g class="edema"><ellipse cx="228" cy="318" rx="102" ry="43"/><ellipse cx="407" cy="315" rx="78" ry="36"/></g>
-
-                  <g class="epithelial-cells">
-                    <rect x="-8" y="188" width="72" height="102" rx="18"/><rect x="58" y="188" width="72" height="102" rx="18"/>
-                    <rect x="124" y="188" width="72" height="102" rx="18"/><rect x="190" y="188" width="72" height="102" rx="18"/>
-                    <rect x="256" y="188" width="72" height="102" rx="18"/><rect x="322" y="188" width="72" height="102" rx="18"/>
-                    <rect x="388" y="188" width="72" height="102" rx="18"/><rect x="454" y="188" width="72" height="102" rx="18"/>
-                  </g>
-                  <g class="cell-nuclei">
-                    <ellipse cx="27" cy="253" rx="12" ry="17"/><ellipse cx="94" cy="253" rx="12" ry="17"/><ellipse cx="160" cy="253" rx="12" ry="17"/>
-                    <ellipse cx="226" cy="253" rx="12" ry="17"/><ellipse cx="292" cy="253" rx="12" ry="17"/><ellipse cx="358" cy="253" rx="12" ry="17"/>
-                    <ellipse cx="424" cy="253" rx="12" ry="17"/><ellipse cx="490" cy="253" rx="12" ry="17"/>
-                  </g>
-                  <path class="goblet-cell" d="M385 188c-8 22-19 34-19 57 0 30 17 45 30 45s29-15 29-45c0-23-10-35-18-57Z"/>
-                  <rect class="infected-cell" x="124" y="188" width="72" height="102" rx="18"/>
-                  <rect class="infected-cell second" x="190" y="188" width="72" height="102" rx="18"/>
-
-                  <path class="mucus-extra" d="M0 144c63-24 120 24 187-3s131 12 199-4 93-5 134 2v50H0Z"/>
-                  <path class="mucus-base" d="M0 168c65-20 122 20 187-2s132 9 198-3 96-2 135 3v28H0Z"/>
-                  <g class="cilia" stroke-linecap="round">
-                    <path d="M12 193 3 169m25 24-3-28m22 28 6-25m18 25-7-26m27 26-2-29m22 29 7-24m20 24-8-26m26 26-1-29m22 29 8-24m19 24-7-27m26 27 1-28m22 28 8-24m19 24-6-27m25 27 2-29m21 29 8-24m19 24-6-27m26 27 2-29m21 29 8-24m19 24-6-27m26 27 2-28m21 28 8-23m19 23-5-26m25 26 2-27m21 27 8-23"/>
-                  </g>
-                  <g class="clearance-arrows"><path d="M54 126h113m-16-13 16 13-16 13M318 112h111m-16-13 16 13-16 13"/></g>
-
-                  <g class="virus-particles">
-                    <g transform="translate(148 79)"><circle r="15"/><path d="M0-24v8M0 16v8M-24 0h8M16 0h8M-17-17l6 6m11 11 6 6m11-23-6 6m-11 11-6 6"/></g>
-                    <g transform="translate(223 137) scale(.8)"><circle r="15"/><path d="M0-24v8M0 16v8M-24 0h8M16 0h8M-17-17l6 6m11 11 6 6m11-23-6 6m-11 11-6 6"/></g>
-                    <g transform="translate(295 67) scale(.67)"><circle r="15"/><path d="M0-24v8M0 16v8M-24 0h8M16 0h8M-17-17l6 6m11 11 6 6m11-23-6 6m-11 11-6 6"/></g>
-                    <g transform="translate(352 129) scale(.58)"><circle r="15"/><path d="M0-24v8M0 16v8M-24 0h8M16 0h8M-17-17l6 6m11 11 6 6m11-23-6 6m-11 11-6 6"/></g>
-                  </g>
-                  <g class="signals"><circle cx="143" cy="308" r="7"/><circle cx="179" cy="323" r="5"/><circle cx="216" cy="309" r="8"/><circle cx="250" cy="327" r="5"/><circle cx="283" cy="309" r="6"/></g>
-                  <g class="immune-cells">
-                    <g transform="translate(104 344)"><circle r="19"/><circle class="immune-nucleus" cx="-6" cy="-2" r="6"/><circle class="immune-nucleus" cx="7" cy="4" r="5"/></g>
-                    <g transform="translate(354 370)"><circle r="21"/><circle class="immune-nucleus" cx="-6" cy="-3" r="6"/><circle class="immune-nucleus" cx="7" cy="5" r="6"/></g>
-                  </g>
-                  <g class="repair-layer"><path d="M17 205c65-15 113 8 170-4s115 7 173-2 99-4 143 2"/><circle cx="149" cy="214" r="7"/><circle cx="220" cy="210" r="7"/></g>
-                </g>
-              </g>
-            </svg>
-            <p class="micro-caption">Слизистая под увеличением</p>
-            <div class="visual-caption" aria-hidden="true">
-              <span><i class="legend virus-dot"></i> вирус</span>
-              <span><i class="legend immune-dot"></i> иммунная клетка</span>
-              <span><i class="legend vessel-dot"></i> сосуд</span>
-              <span><i class="legend nerve-dot"></i> чувствительный нерв</span>
+          <figure class="path-visual">
+            <div class="onset-image-window" id="path-visual-stage" role="img" aria-label="Вирусные частицы достигают поверхности слизистой.">
+              <img src="assets/cold-onset-mucosa.jpg" width="1536" height="1024" alt="" aria-hidden="true" decoding="async">
             </div>
-              </div>
-            </div>
-          </div>
+            <figcaption class="micro-caption">Слизистая под увеличением</figcaption>
+          </figure>
 
-          <div class="path-copy" aria-live="polite">
-            <div class="path-description">
-            <p class="step-count" id="path-step-count">Шаг 1 из 4</p>
-            <h3 id="path-step-title">Вирус достигает слизистой</h3>
-            <p id="path-step-text">Частицы с вирусом достигают слизистой с воздухом или через руки при касании носа, рта и глаз.</p>
+          <div class="path-copy">
+            <ol class="path-step-list" aria-label="Этапы начала простуды">
+              <li><button type="button" data-path-step="0" aria-current="step" aria-controls="path-description" aria-label="Этап 1: вирус достигает слизистой" title="Вирус достигает слизистой">1</button></li>
+              <li><button type="button" data-path-step="1" aria-controls="path-description" aria-label="Этап 2: вирус проникает в клетки" title="Вирус проникает в клетки">2</button></li>
+              <li><button type="button" data-path-step="2" aria-controls="path-description" aria-label="Этап 3: клетки подают сигнал" title="Клетки подают сигнал">3</button></li>
+              <li><button type="button" data-path-step="3" aria-controls="path-description" aria-label="Этап 4: возникают симптомы" title="Возникают симптомы">4</button></li>
+            </ol>
+
+            <div class="path-description" id="path-description" aria-live="polite">
+              <h3 id="path-step-title">Вирус достигает слизистой</h3>
+              <p id="path-step-text">Частицы с вирусом достигают слизистой с воздухом или через руки при касании носа, рта и глаз.</p>
             </div>
-            <div class="path-navigation">
-            <div class="step-dots" id="path-step-dots" aria-label="Этапы объяснения"></div>
-            <div class="path-controls">
-              <button type="button" class="button quiet" id="path-prev" disabled>Назад</button>
-              <button type="button" class="button primary" id="path-next">Далее <span aria-hidden="true">→</span></button>
+
+            <div class="visual-caption" aria-label="Условные обозначения">
+              <span><i class="legend virus-dot" aria-hidden="true"></i> вирус</span>
+              <span><i class="legend immune-dot" aria-hidden="true"></i> иммунная клетка</span>
+              <span><i class="legend vessel-dot" aria-hidden="true"></i> сосуд</span>
+              <span><i class="legend nerve-dot" aria-hidden="true"></i> чувствительный нерв</span>
             </div>
-            </div>
+            <p class="visual-scale-note">Вирусные частицы и сигнальные молекулы увеличены условно.</p>
           </div>
         </div>
 
@@ -903,7 +834,6 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
       <section class="section anatomy-section" id="anatomy" aria-labelledby="anatomy-title">
         <div class="section-heading wide-heading">
           <div>
-            <p class="eyebrow">Анатомическая карта</p>
             <h2 id="anatomy-title">Где возникают симптомы</h2>
           </div>
           <p>Выберите область головы или шеи. Карта показывает соседние структуры и объясняет, что именно может измениться при инфекции.</p>
@@ -916,22 +846,16 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
             <figure class="atlas-map">
               <div class="atlas-stage">
                 <img src="assets/head-neck-map.jpg" width="1024" height="1536" alt="Профиль головы и шеи взрослого. Выберите нос, ухо, область ротоглотки, гортани или шейных лимфоузлов." loading="lazy" decoding="async">
-                <button class="atlas-hotspot hotspot-nose" type="button" data-region-hotspot="nose" aria-label="Выбрать нос и пазухи" aria-pressed="true"><span>1</span></button>
-                <button class="atlas-hotspot hotspot-ear" type="button" data-region-hotspot="ear" aria-label="Выбрать среднее ухо" aria-pressed="false"><span>2</span></button>
-                <button class="atlas-hotspot hotspot-throat" type="button" data-region-hotspot="throat" aria-label="Выбрать ротоглотку" aria-pressed="false"><span>3</span></button>
-                <button class="atlas-hotspot hotspot-larynx" type="button" data-region-hotspot="larynx" aria-label="Выбрать гортань" aria-pressed="false"><span>4</span></button>
-                <button class="atlas-hotspot hotspot-neck" type="button" data-region-hotspot="neck" aria-label="Выбрать лимфоузлы шеи" aria-pressed="false"><span>5</span></button>
+                <div class="atlas-hotspots" role="tablist" aria-label="Области головы и шеи">
+                  <button class="atlas-hotspot hotspot-nose" type="button" role="tab" id="region-tab-nose" data-region="nose" aria-label="Нос и пазухи" aria-selected="true" aria-controls="region-panel-nose" title="Нос и пазухи"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Нос и пазухи</span></button>
+                  <button class="atlas-hotspot hotspot-ear" type="button" role="tab" id="region-tab-ear" data-region="ear" aria-label="Среднее ухо" aria-selected="false" aria-controls="region-panel-ear" tabindex="-1" title="Среднее ухо"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Среднее ухо</span></button>
+                  <button class="atlas-hotspot hotspot-throat" type="button" role="tab" id="region-tab-throat" data-region="throat" aria-label="Ротоглотка" aria-selected="false" aria-controls="region-panel-throat" tabindex="-1" title="Ротоглотка"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Ротоглотка</span></button>
+                  <button class="atlas-hotspot hotspot-larynx" type="button" role="tab" id="region-tab-larynx" data-region="larynx" aria-label="Гортань и голос" aria-selected="false" aria-controls="region-panel-larynx" tabindex="-1" title="Гортань и голос"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Гортань и голос</span></button>
+                  <button class="atlas-hotspot hotspot-neck" type="button" role="tab" id="region-tab-neck" data-region="neck" aria-label="Лимфоузлы шеи" aria-selected="false" aria-controls="region-panel-neck" tabindex="-1" title="Лимфоузлы шеи"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Лимфоузлы шеи</span></button>
+                </div>
               </div>
-              <figcaption>Нажмите на область или её название.</figcaption>
+              <figcaption id="region-map-status" aria-live="polite">Выбрано: нос и пазухи.</figcaption>
             </figure>
-
-            <div class="region-tabs" role="tablist" aria-label="Области головы и шеи">
-              <button type="button" role="tab" id="region-tab-nose" aria-selected="true" aria-controls="region-panel-nose" data-region="nose"><span>01</span>Нос и пазухи</button>
-              <button type="button" role="tab" id="region-tab-ear" aria-selected="false" aria-controls="region-panel-ear" tabindex="-1" data-region="ear"><span>02</span>Среднее ухо</button>
-              <button type="button" role="tab" id="region-tab-throat" aria-selected="false" aria-controls="region-panel-throat" tabindex="-1" data-region="throat"><span>03</span>Ротоглотка</button>
-              <button type="button" role="tab" id="region-tab-larynx" aria-selected="false" aria-controls="region-panel-larynx" tabindex="-1" data-region="larynx"><span>04</span>Гортань и голос</button>
-              <button type="button" role="tab" id="region-tab-neck" aria-selected="false" aria-controls="region-panel-neck" tabindex="-1" data-region="neck"><span>05</span>Лимфоузлы шеи</button>
-            </div>
           </div>
 
           <div class="region-panels">
@@ -948,34 +872,40 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
                   <figcaption><strong>На этом виде:</strong> лобные пазухи находятся над бровями, верхнечелюстные — по сторонам от носа, решётчатые — между глазами. Клиновидная пазуха расположена глубже и здесь не показана.</figcaption>
                 </figure>
               </details>
-              <div class="region-facts">
-                <article>
-                  <p class="fact-kind usual">Частое проявление</p><h4>Ринит</h4>
+              <div class="region-facts region-disclosures">
+                <details class="region-disclosure" open>
+                  <summary><span class="fact-kind usual">Частое проявление</span><span class="disclosure-title">Ринит</span><small>Заложенность, выделения и чихание</small></summary>
+                  <div class="region-disclosure-body">
                   <p><strong>Что меняется.</strong> Сосуды расширяются, слизистая отекает и выделяет больше секрета.</p>
                   <p><strong>Как ощущается.</strong> Заложенность, выделения, чихание и временное снижение обоняния.</p>
                   <figure class="region-figure condition-figure">
                     <div class="region-image-frame natural-image-frame"><img src="assets/nasal-inflammation-comparison.jpg" width="1536" height="1024" alt="Слева носовые ходы свободны. Справа отёчная слизистая носовых раковин сужает проход для воздуха; секрета становится больше." loading="lazy" decoding="async"></div>
                     <figcaption class="comparison-labels"><span><strong>Без воспаления</strong>Между носовыми раковинами есть пространство для воздуха.</span><span><strong>При рините</strong>Слизистая, покрывающая раковины, отекает и сужает носовые ходы.</span></figcaption>
                   </figure>
-                </article>
-                <article>
-                  <p class="fact-kind related">Связанное состояние</p><h4>Дисфункция слуховой трубы</h4>
+                  </div>
+                </details>
+                <details class="region-disclosure">
+                  <summary><span class="fact-kind related">Связанное состояние</span><span class="disclosure-title">Дисфункция слуховой трубы</span><small>Заложенность уха и изменение давления</small></summary>
+                  <div class="region-disclosure-body">
                   <p><strong>Что меняется.</strong> Отёк у отверстия трубы мешает выравнивать давление в среднем ухе. Это ещё не отит.</p>
                   <p><strong>Как ощущается.</strong> Заложенность уха, щелчки, приглушённый слух или ощущение «как под водой».</p>
                   <figure class="region-figure condition-figure">
                     <div class="region-image-frame natural-image-frame"><img src="assets/eustachian-tube-comparison.jpg" width="1536" height="1024" alt="Слева слуховая труба открывается при глотании и выравнивает давление. Справа отёк у её глоточного отверстия затрудняет открытие." loading="lazy" decoding="async"></div>
                     <figcaption class="comparison-labels"><span><strong>При глотании</strong>Слуховая труба ненадолго открывается и помогает выровнять давление.</span><span><strong>При отёке</strong>Открытие затруднено, поэтому могут появиться заложенность и щелчки.</span><small>В норме труба закрыта в покое. Такая дисфункция сама по себе не означает отит.</small></figcaption>
                   </figure>
-                </article>
-                <article>
-                  <p class="fact-kind related">Связанное состояние</p><h4>Острый синусит</h4>
+                  </div>
+                </details>
+                <details class="region-disclosure">
+                  <summary><span class="fact-kind related">Связанное состояние</span><span class="disclosure-title">Острый синусит</span><small>Отёк мешает естественному оттоку из пазух</small></summary>
+                  <div class="region-disclosure-body">
                   <p><strong>Что меняется.</strong> При отёке сужаются естественные пути оттока из пазух. Большинство острых эпизодов вирусные; бактериальное осложнение развивается значительно реже.</p>
                   <p><strong>Как ощущается.</strong> Заложенность или выделения вместе с давлением в лице и снижением обоняния.</p>
                   <figure class="region-figure condition-figure">
                     <div class="region-image-frame natural-image-frame"><img src="assets/sinusitis-front-comparison.jpg" width="1536" height="1024" alt="Сравнение пазух без воспаления и при остром синусите: отёк слизистой сужает естественные пути оттока, и секрет задерживается в пазухе." loading="lazy" decoding="async"></div>
                     <figcaption class="comparison-labels"><span><strong>Без воспаления</strong>Слизистая тонкая, естественные пути оттока открыты.</span><span><strong>При остром синусите</strong>Отёк слизистой сужает пути оттока, поэтому секрет может задерживаться.</span><small>По этой схеме нельзя определить причину воспаления.</small></figcaption>
                   </figure>
-                </article>
+                  </div>
+                </details>
               </div>
               <p class="region-alert"><strong>Обратитесь к врачу,</strong> если за 10 дней нет улучшения, после улучшения снова стало хуже или появилась выраженная односторонняя боль. <strong>Срочно обращайтесь за помощью</strong> при отёке вокруг глаза, двоении или ухудшении зрения.</p>
             </article>
@@ -1089,10 +1019,10 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
           </figure>
 
           <ol class="cough-sequence">
-            <li><button type="button" data-cough-step="0" aria-pressed="true"><span class="cough-step-number">1</span><span><strong>Раздражитель включает рецепторы</strong><span class="cough-step-copy">Воспаление, слизь или другой раздражитель возбуждает чувствительные нервные окончания в гортани, трахее и крупных бронхах.</span></span></button></li>
-            <li><button type="button" data-cough-step="1" aria-pressed="false"><span class="cough-step-number">2</span><span><strong>Сигнал поступает в ствол мозга</strong><span class="cough-step-copy">Чувствительные волокна, главным образом в составе блуждающего нерва, передают сигнал в центры управления кашлем.</span></span></button></li>
-            <li><button type="button" data-cough-step="2" aria-pressed="false"><span class="cough-step-number">3</span><span><strong>Организм создаёт давление</strong><span class="cough-step-copy">Следует команда дыхательным мышцам: происходит вдох, голосовая щель кратко закрывается, давление в грудной клетке растёт.</span></span></button></li>
-            <li><button type="button" data-cough-step="3" aria-pressed="false"><span class="cough-step-number">4</span><span><strong>Быстрый выдох очищает дыхательные пути</strong><span class="cough-step-copy">Голосовая щель открывается, и поток воздуха помогает вынести секрет и раздражители.</span></span></button></li>
+            <li><button type="button" data-cough-step="0" aria-pressed="true" aria-expanded="true"><span class="cough-step-number">1</span><span><strong>Раздражитель включает рецепторы</strong><span class="cough-step-copy">Воспаление, слизь или другой раздражитель возбуждает чувствительные нервные окончания в гортани, трахее и крупных бронхах.</span></span></button></li>
+            <li><button type="button" data-cough-step="1" aria-pressed="false" aria-expanded="false"><span class="cough-step-number">2</span><span><strong>Сигнал поступает в ствол мозга</strong><span class="cough-step-copy">Чувствительные волокна, главным образом в составе блуждающего нерва, передают сигнал в центры управления кашлем.</span></span></button></li>
+            <li><button type="button" data-cough-step="2" aria-pressed="false" aria-expanded="false"><span class="cough-step-number">3</span><span><strong>Организм создаёт давление</strong><span class="cough-step-copy">Следует команда дыхательным мышцам: происходит вдох, голосовая щель кратко закрывается, давление в грудной клетке растёт.</span></span></button></li>
+            <li><button type="button" data-cough-step="3" aria-pressed="false" aria-expanded="false"><span class="cough-step-number">4</span><span><strong>Быстрый выдох очищает дыхательные пути</strong><span class="cough-step-copy">Голосовая щель открывается, и поток воздуха помогает вынести секрет и раздражители.</span></span></button></li>
           </ol>
         </div>
 
@@ -1110,11 +1040,12 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
           <p>Симптоматическое лечение не обязано уничтожать вирус. Его задача — уменьшить боль, жар, отёк или раздражение, чтобы вы могли пить, спать и восстанавливаться.</p>
         </div>
 
-        <div class="treatment-card" id="treatment-card">
+        <div class="treatment-card" id="treatment-card" data-treatment="pain">
           <div class="symptom-tabs" role="tablist" aria-label="Выберите симптом">
             <button type="button" role="tab" aria-selected="true" data-treatment="pain">Боль и температура</button>
             <button type="button" role="tab" aria-selected="false" data-treatment="nose">Заложенность</button>
-            <button type="button" role="tab" aria-selected="false" data-treatment="cough">Горло и кашель</button>
+            <button type="button" role="tab" aria-selected="false" data-treatment="throat">Боль в горле</button>
+            <button type="button" role="tab" aria-selected="false" data-treatment="cough">Кашель</button>
             <button type="button" role="tab" aria-selected="false" data-treatment="weakness">Слабость</button>
           </div>
           <div class="treatment-panel" role="tabpanel" tabindex="0" aria-live="polite">
@@ -1128,15 +1059,16 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
             </div>
             <div class="effect-visual" aria-label="Условное сравнение симптома и активности инфекции">
               <div class="effect-row">
-                <span>Симптом</span>
+                <span id="symptom-label">Боль и температура</span>
                 <div class="effect-track" aria-hidden="true"><i class="symptom-level"></i></div>
-                <strong id="symptom-word">выражен</strong>
+                <strong id="symptom-word">выражены</strong>
               </div>
               <div class="effect-row">
                 <span>Инфекция</span>
                 <div class="effect-track" aria-hidden="true"><i class="infection-level"></i></div>
                 <strong>не меняется мгновенно</strong>
               </div>
+              <p class="effect-note" id="treatment-note">Условная схема показывает направление эффекта, а не его точную величину.</p>
             </div>
           </div>
         </div>
@@ -1221,13 +1153,19 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
               <div><strong>Кашлевой рефлекс успокаивается</strong><small>Кашель постепенно становится реже и слабее.</small></div>
             </div>
           </div>
-          <div class="recovery-copy">
-            <h3>Почему кашель остаётся</h3>
-            <p>После инфекции дыхательные пути некоторое время остаются воспалёнными и чувствительными. Слизи может быть больше, а её выведение — менее эффективным. Острый кашель нередко длится до 3–4 недель.</p>
-            <h3>Заложенность и слабость</h3>
-            <p>Отёк и стекание слизи уменьшаются постепенно. Утомляемость тоже может отставать от исчезновения температуры, поэтому возвращаться к нагрузке лучше постепенно.</p>
-            <h3>Обоняние</h3>
-            <p>При заложенности запахи хуже достигают обонятельной области. Если нос уже дышит, а обоняние не возвращается в течение нескольких недель, стоит обратиться к врачу.</p>
+          <div class="recovery-copy recovery-disclosures">
+            <details class="recovery-disclosure" open>
+              <summary><span>Почему кашель остаётся</span><small>Дыхательные пути восстанавливаются постепенно</small></summary>
+              <div><p>После инфекции дыхательные пути некоторое время остаются воспалёнными и чувствительными. Слизи может быть больше, а её выведение — менее эффективным. Острый кашель нередко длится до 3–4 недель.</p></div>
+            </details>
+            <details class="recovery-disclosure">
+              <summary><span>Заложенность и слабость</span><small>Эти симптомы могут отставать от общего улучшения</small></summary>
+              <div><p>Отёк и стекание слизи уменьшаются постепенно. Утомляемость тоже может отставать от исчезновения температуры, поэтому возвращаться к нагрузке лучше постепенно.</p></div>
+            </details>
+            <details class="recovery-disclosure">
+              <summary><span>Обоняние</span><small>Заложенность мешает запахам достигать обонятельной области</small></summary>
+              <div><p>При заложенности запахи хуже достигают обонятельной области. Если нос уже дышит, а обоняние не возвращается в течение нескольких недель, стоит обратиться к врачу.</p></div>
+            </details>
           </div>
         </div>
         <aside class="caution-inline">
@@ -1244,12 +1182,12 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
           <p>Взрослые в среднем переносят около двух–трёх простуд в год. Это описательная цифра, а не диагностический порог. Важны тяжесть, длительность и полное восстановление между эпизодами.</p>
         </div>
 
-        <div class="reason-grid">
-          <article><span>01</span><h3>Много контактов</h3><p>Простуду вызывают более 200 вирусов. Работа с людьми, дети дома, общественный транспорт, места скопления людей, аэропорты и перелёты увеличивают число близких контактов.</p></article>
-          <article><span>02</span><h3>Симптом ещё не прошёл</h3><p>Остаточный кашель или заложенность могут тянуться несколько недель и накладываться на новый эпизод.</p></article>
-          <article><span>03</span><h3>Это может быть аллергия</h3><p>Зуд носа и глаз, слезотечение и связь с сезоном, животными или пылью больше характерны для аллергического ринита.</p></article>
-          <article><span>04</span><h3>Дополнительная нагрузка</h3><p>Курение повышает риск респираторных инфекций. Недостаточный сон в исследованиях тоже был связан с большей восприимчивостью.</p></article>
-          <article><span>05</span><h3>Болезнь или лечение</h3><p>Некоторые препараты и заболевания ослабляют защиту от инфекций. Редко иммунодефицит впервые выявляют во взрослом возрасте.</p></article>
+        <div class="reason-grid reason-disclosures">
+          <details class="reason-disclosure" open><summary><span class="reason-number" aria-hidden="true">01</span><span class="reason-title">Много контактов</span></summary><div><p>Простуду вызывают более 200 вирусов. Работа с людьми, дети дома, общественный транспорт, места скопления людей, аэропорты и перелёты увеличивают число близких контактов.</p></div></details>
+          <details class="reason-disclosure"><summary><span class="reason-number" aria-hidden="true">02</span><span class="reason-title">Симптом ещё не прошёл</span></summary><div><p>Остаточный кашель или заложенность могут тянуться несколько недель и накладываться на новый эпизод.</p></div></details>
+          <details class="reason-disclosure"><summary><span class="reason-number" aria-hidden="true">03</span><span class="reason-title">Это может быть аллергия</span></summary><div><p>Зуд носа и глаз, слезотечение и связь с сезоном, животными или пылью больше характерны для аллергического ринита.</p></div></details>
+          <details class="reason-disclosure"><summary><span class="reason-number" aria-hidden="true">04</span><span class="reason-title">Дополнительная нагрузка</span></summary><div><p>Курение повышает риск респираторных инфекций. Недостаточный сон в исследованиях тоже был связан с большей восприимчивостью.</p></div></details>
+          <details class="reason-disclosure"><summary><span class="reason-number" aria-hidden="true">05</span><span class="reason-title">Болезнь или лечение</span></summary><div><p>Некоторые препараты и заболевания ослабляют защиту от инфекций. Редко иммунодефицит впервые выявляют во взрослом возрасте.</p></div></details>
         </div>
 
         <div class="self-check">
@@ -1390,56 +1328,49 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   const pathCard = document.querySelector('#path-card');
   const pathTitle = document.querySelector('#path-step-title');
   const pathText = document.querySelector('#path-step-text');
-  const pathCount = document.querySelector('#path-step-count');
-  const pathDots = document.querySelector('#path-step-dots');
-  const pathPrev = document.querySelector('#path-prev');
-  const pathNext = document.querySelector('#path-next');
-  let activePathStep = 0;
+  const pathVisual = document.querySelector('#path-visual-stage');
+  const pathButtons = [...document.querySelectorAll('[data-path-step]')];
+  const pathVisualDescriptions = [
+    'Слизистая под увеличением: вирусные частицы достигают слизи над ресничками эпителия.',
+    'Вирус прикрепляется к поверхности эпителиальной клетки и размножается внутри неё.',
+    'Сигнальные вещества и иммунные клетки в ткани под эпителием.',
+    'Воспалительная реакция слизистой: секрета и иммунных клеток становится больше.'
+  ];
 
-  function setPathStep(index, focusDot = false) {
-    activePathStep = Math.max(0, Math.min(pathSteps.length - 1, index));
-    const step = pathSteps[activePathStep];
-
-    pathCard.dataset.step = String(activePathStep);
-    pathTitle.textContent = step.title;
-    pathText.textContent = step.text;
-    pathCount.textContent = `Шаг ${activePathStep + 1} из ${pathSteps.length}`;
-    pathPrev.disabled = activePathStep === 0;
-    pathNext.innerHTML = activePathStep === pathSteps.length - 1
-      ? 'Сначала <span aria-hidden="true">↺</span>'
-      : 'Далее <span aria-hidden="true">→</span>';
-
-    [...pathDots.children].forEach((dot, dotIndex) => {
-      if (dotIndex === activePathStep) {
-        dot.setAttribute('aria-current', 'step');
-        if (focusDot) dot.focus();
-      } else {
-        dot.removeAttribute('aria-current');
-      }
+  function setPathStep(index, focusButton = false) {
+    const active = Math.max(0, Math.min(pathSteps.length - 1, index));
+    pathCard.dataset.step = String(active);
+    pathTitle.textContent = pathSteps[active].title;
+    pathText.textContent = pathSteps[active].text;
+    if (pathVisual) pathVisual.setAttribute('aria-label', pathVisualDescriptions[active]);
+    pathButtons.forEach((button, buttonIndex) => {
+      if (buttonIndex === active) button.setAttribute('aria-current', 'step');
+      else button.removeAttribute('aria-current');
+      if (buttonIndex === active && focusButton) button.focus();
     });
   }
 
-  if (pathCard && pathTitle && pathText && pathCount && pathDots && pathPrev && pathNext) {
-    pathSteps.forEach((step, index) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'step-dot';
-      dot.textContent = String(index + 1);
-      dot.setAttribute('aria-label', `Шаг ${index + 1}: ${step.title}`);
-      dot.addEventListener('click', () => setPathStep(index));
-      pathDots.append(dot);
-    });
-
-    pathPrev.addEventListener('click', () => setPathStep(activePathStep - 1));
-    pathNext.addEventListener('click', () => {
-      setPathStep(activePathStep === pathSteps.length - 1 ? 0 : activePathStep + 1);
+  if (pathCard && pathTitle && pathText && pathButtons.length === pathSteps.length) {
+    pathCard.classList.add('is-ready');
+    pathButtons.forEach((button, index) => {
+      button.addEventListener('click', () => setPathStep(index));
+      button.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        let next = index;
+        if (event.key === 'ArrowRight') next = (index + 1) % pathButtons.length;
+        if (event.key === 'ArrowLeft') next = (index - 1 + pathButtons.length) % pathButtons.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = pathButtons.length - 1;
+        setPathStep(next, true);
+      });
     });
     setPathStep(0);
   }
 
   const anatomyExplorer = document.querySelector('#anatomy-explorer');
+  const regionMapStatus = document.querySelector('#region-map-status');
   const regionTabs = [...document.querySelectorAll('[role="tab"][data-region]')];
-  const regionHotspots = [...document.querySelectorAll('[data-region-hotspot]')];
   const regionPanels = [...document.querySelectorAll('[data-region-panel]')];
 
   function selectRegion(key, focusTab = false) {
@@ -1448,6 +1379,7 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
     if (!selectedTab) return;
 
     anatomyExplorer.dataset.region = key;
+    if (regionMapStatus) regionMapStatus.textContent = `Выбрано: ${selectedTab.getAttribute('aria-label')}.`;
     anatomyExplorer.classList.add('is-ready');
 
     regionTabs.forEach((tab) => {
@@ -1455,10 +1387,6 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
       tab.setAttribute('aria-selected', String(isSelected));
       tab.tabIndex = isSelected ? 0 : -1;
       if (isSelected && focusTab) tab.focus();
-    });
-
-    regionHotspots.forEach((hotspot) => {
-      hotspot.setAttribute('aria-pressed', String(hotspot.dataset.regionHotspot === key));
     });
 
     regionPanels.forEach((panel) => {
@@ -1481,11 +1409,6 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
       });
     });
 
-    regionHotspots.forEach((hotspot) => {
-      hotspot.tabIndex = -1;
-      hotspot.addEventListener('click', () => selectRegion(hotspot.dataset.regionHotspot, true));
-    });
-
     selectRegion('nose');
   }
 
@@ -1494,7 +1417,11 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   const coughLayers = [...document.querySelectorAll('[data-cough-layer]')];
   function selectCoughStep(phase) {
     coughMechanism.dataset.phase = phase;
-    coughSteps.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.coughStep === phase)));
+    coughSteps.forEach((button) => {
+      const active = button.dataset.coughStep === phase;
+      button.setAttribute('aria-pressed', String(active));
+      button.setAttribute('aria-expanded', String(active));
+    });
     coughLayers.forEach((layer) => layer.setAttribute('display', layer.dataset.coughLayer === phase ? 'inline' : 'none'));
   }
   if (coughMechanism && coughSteps.length === 4 && coughLayers.length === 4) {
@@ -1516,10 +1443,21 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
       mechanism: 'Сосуды слизистой расширяются, жидкость выходит в ткани, а количество секрета увеличивается.',
       support: 'Солевой раствор может немного облегчить симптомы. Сосудосуживающее средство временно уменьшает отёк, но подходит не всем и используется только по инструкции.'
     },
+    throat: {
+      title: 'Боль в горле',
+      mechanism: 'Воспалённая слизистая глотки становится чувствительнее, поэтому першит и больно глотать.',
+      support: 'Парацетамол или ибупрофен могут уменьшить боль, если вам подходят. Достаточное питьё помогает избежать обезвоживания. Леденцы с лекарственным компонентом у взрослых тоже могут помочь, но обычно лишь немного.',
+      symptomLabel: 'Боль при глотании',
+      before: 'выражена',
+      after: 'слабее'
+    },
     cough: {
-      title: 'Першение и кашель',
-      mechanism: 'Воспалённая слизистая и стекающий секрет повышают чувствительность кашлевого рефлекса.',
-      support: 'Тёплое питьё и леденцы могут уменьшить раздражение. Некоторые безрецептурные средства дают небольшое облегчение, но не устраняют причину кашля.'
+      title: 'Кашель',
+      mechanism: 'Воспаление и стекающий из носа секрет повышают чувствительность кашлевого рефлекса. При мокроте кашель также помогает очищать дыхательные пути.',
+      support: 'Тёплое питьё может смягчить раздражение. Мёд может немного уменьшить кашель. Некоторые безрецептурные средства тоже иногда помогают, но эффект ограничен и зависит от состава. При обильной мокроте подавлять кашель без совета врача или фармацевта не стоит: рефлекс помогает выводить секрет.',
+      symptomLabel: 'Позывы к кашлю',
+      before: 'частые',
+      after: 'могут стать реже'
     },
     weakness: {
       title: 'Слабость и утомляемость',
@@ -1530,18 +1468,20 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 
   const treatmentCard = document.querySelector('#treatment-card');
   const treatmentPanel = document.querySelector('.treatment-panel');
-  const treatmentTabs = [...document.querySelectorAll('[data-treatment]')];
+  const treatmentTabs = [...document.querySelectorAll('[role="tab"][data-treatment]')];
   const treatmentTitle = document.querySelector('#treatment-title');
   const treatmentMechanism = document.querySelector('#treatment-mechanism');
   const treatmentSupport = document.querySelector('#treatment-support');
   const treatmentAction = document.querySelector('#treatment-action');
   const symptomWord = document.querySelector('#symptom-word');
+  const symptomLabel = document.querySelector('#symptom-label');
+  let activeTreatment = treatments.pain;
   let treatmentIsRelieved = false;
 
   function resetTreatmentEffect() {
     treatmentIsRelieved = false;
     treatmentCard.classList.remove('is-relieved');
-    symptomWord.textContent = 'выражен';
+    symptomWord.textContent = activeTreatment.before || 'выражен';
     treatmentAction.textContent = 'Показать эффект';
   }
 
@@ -1549,6 +1489,9 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
     const treatment = treatments[key];
     if (!treatment) return;
 
+    activeTreatment = treatment;
+    treatmentCard.dataset.treatment = key;
+    if (symptomLabel) symptomLabel.textContent = treatment.symptomLabel || 'Симптом';
     treatmentTitle.textContent = treatment.title;
     treatmentMechanism.textContent = treatment.mechanism;
     treatmentSupport.textContent = treatment.support;
@@ -1584,11 +1527,27 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
     treatmentAction.addEventListener('click', () => {
       treatmentIsRelieved = !treatmentIsRelieved;
       treatmentCard.classList.toggle('is-relieved', treatmentIsRelieved);
-      symptomWord.textContent = treatmentIsRelieved ? 'слабее' : 'выражен';
+      symptomWord.textContent = treatmentIsRelieved
+        ? (activeTreatment.after || 'слабее')
+        : (activeTreatment.before || 'выражен');
       treatmentAction.textContent = treatmentIsRelieved ? 'Вернуть исходное' : 'Показать эффект';
     });
 
     selectTreatment('pain');
+  }
+  // Reveal folded content for print and restore the reader's choices afterwards.
+  if (typeof window !== 'undefined') {
+    let closedBeforePrint = null;
+    window.addEventListener('beforeprint', () => {
+      if (closedBeforePrint !== null) return;
+      closedBeforePrint = [...document.querySelectorAll('details')].filter(detail => !detail.open);
+      closedBeforePrint.forEach(detail => { detail.open = true; });
+    });
+    window.addEventListener('afterprint', () => {
+      if (closedBeforePrint === null) return;
+      closedBeforePrint.forEach(detail => { detail.open = false; });
+      closedBeforePrint = null;
+    });
   }
 })();
 </script>
