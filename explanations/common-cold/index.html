@@ -275,13 +275,12 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 .anatomy-context { margin: -22px 0 30px; color: var(--muted); font-size: .9rem; }
 .anatomy-context strong { font-family: Georgia, serif; font-size: 1.18rem; line-height: 1.35; }
 .anatomy-context p { margin: 0; color: var(--muted); font-size: .9rem; }
-.anatomy-explorer { display: grid; grid-template-columns: minmax(260px, .58fr) minmax(0, 1.42fr); gap: clamp(28px, 4vw, 48px); align-items: start; }
-.anatomy-map-column { position: sticky; top: 18px; min-width: 0; }
+.anatomy-explorer { display: block; }
+.anatomy-map-column { width: min(100%, 360px); min-width: 0; margin: 0 auto; }
 .atlas-map { position: relative; z-index: 2; margin: 0; overflow: visible; background: #efe5d5; border: 1px solid var(--rule); border-radius: 24px; box-shadow: var(--shadow); }
-.atlas-stage { position: relative; max-width: 340px; margin: auto; overflow: visible; }
-.atlas-stage > img { width: 100%; height: auto; border-radius: 23px 23px 0 0; }
+.atlas-stage { position: relative; margin: auto; overflow: visible; }
+.atlas-stage > img { width: 100%; height: auto; border-radius: 23px; }
 .atlas-hotspots { position: absolute; inset: 0; }
-.atlas-map figcaption { padding: 13px 18px 15px; color: var(--muted); background: rgba(255,253,248,.72); border-top: 1px solid var(--rule); font-size: .73rem; line-height: 1.45; }
 .atlas-hotspot {
   position: absolute;
   display: none;
@@ -310,7 +309,7 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
 }
 .atlas-hotspot:hover .hotspot-dot { transform: scale(1.12); }
-.atlas-hotspot[aria-selected="true"] .hotspot-dot { background: var(--shirt); border-color: #fff8ed; box-shadow: 0 0 0 3px var(--ochre), 0 4px 12px rgba(50,38,24,.3); }
+.atlas-hotspot[aria-expanded="true"] .hotspot-dot { background: var(--shirt); border-color: #fff8ed; box-shadow: 0 0 0 3px var(--ochre), 0 4px 12px rgba(50,38,24,.3); }
 .hotspot-tooltip {
   position: absolute;
   top: calc(100% - 2px);
@@ -332,12 +331,10 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   visibility: hidden;
 }
 .atlas-hotspot:hover .hotspot-tooltip,
-.atlas-hotspot:focus-visible .hotspot-tooltip,
-.atlas-hotspot[aria-selected="true"] .hotspot-tooltip { opacity: 1; transform: translate(-50%, 0); visibility: visible; }
+.atlas-hotspot:focus-visible .hotspot-tooltip { opacity: 1; transform: translate(-50%, 0); visibility: visible; }
 .hotspot-nose .hotspot-tooltip { left: 0; transform: translate(0, -3px); }
 .hotspot-nose:hover .hotspot-tooltip,
-.hotspot-nose:focus-visible .hotspot-tooltip,
-.hotspot-nose[aria-selected="true"] .hotspot-tooltip { transform: translate(0, 0); }
+.hotspot-nose:focus-visible .hotspot-tooltip { transform: translate(0, 0); }
 .hotspot-nose { left: 15%; top: 39%; }
 .hotspot-eyes { left: 21%; top: 32%; }
 .hotspot-eyes .hotspot-tooltip { top: auto; bottom: calc(100% - 2px); }
@@ -348,6 +345,39 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 .region-panels { min-width: 0; }
 .region-panel { margin-bottom: 24px; padding: clamp(24px, 3vw, 36px); background: rgba(255,253,248,.62); border: 1px solid var(--rule); border-radius: 24px; box-shadow: var(--shadow); }
 .region-panel[hidden] { display: none; }
+body.region-dialog-open { overflow: hidden; }
+.region-dialog {
+  width: min(940px, calc(100% - 48px));
+  max-width: none;
+  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scroll-padding-top: 84px;
+  color: var(--ink);
+  background: var(--paper-light);
+  border: 1px solid var(--rule);
+  border-radius: 24px;
+  box-shadow: 0 24px 90px rgba(37,38,33,.26);
+}
+.region-dialog::backdrop { background: rgba(37,38,33,.5); }
+.region-dialog.is-ready:not([open]) { display: none; }
+.region-dialog:not(.is-ready) { display: block; position: static; width: 100%; max-height: none; margin: 24px 0 0; border: 0; box-shadow: none; }
+.region-dialog:not(.is-ready) .region-dialog-toolbar { display: none; }
+.region-dialog-toolbar { position: sticky; top: 0; z-index: 5; display: grid; grid-template-columns: minmax(0, 1fr) 44px; gap: 12px; align-items: start; padding: 14px 18px; background: var(--paper-light); border-bottom: 1px solid var(--rule); }
+.region-dialog-tabs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; }
+.region-dialog-tabs button { min-width: 0; min-height: 44px; padding: 9px 6px; border: 1px solid transparent; border-radius: 12px; color: var(--muted); background: transparent; cursor: pointer; font-size: .82rem; font-weight: 720; }
+.region-dialog-tabs button:hover { background: var(--paper); }
+.region-dialog-tabs button[aria-selected="true"] { color: var(--white); background: var(--shirt); border-color: var(--shirt); }
+.region-dialog-close { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 50%; cursor: pointer; }
+.region-dialog-close:hover { color: var(--ochre); border-color: var(--ochre); }
+.region-dialog-close svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.region-dialog-tabs button:focus-visible, .region-dialog-close:focus-visible { outline: 3px solid var(--ochre); outline-offset: 2px; }
+.region-dialog .region-panels { width: min(100%, 860px); margin: 0 auto; }
+.region-dialog .region-panel { margin: 0; padding: 24px 32px 40px; background: none; border: 0; border-radius: 0; box-shadow: none; }
+.region-dialog .anatomy-context { width: min(100%, 860px); margin: 22px auto 0; padding: 0 32px; font-size: .8rem; }
 .region-panel-heading { max-width: 720px; margin-bottom: 24px; }
 .region-selected { margin-bottom: 10px; color: var(--ochre); font-size: .7rem; font-weight: 820; letter-spacing: .1em; text-transform: uppercase; }
 .region-panel-heading h3 { margin-bottom: 12px; font-size: clamp(1.75rem, 3vw, 2.55rem); }
@@ -409,30 +439,19 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 .region-alert strong { color: var(--ink); }
 .compact-guidance { margin-top: 4px; }
 
-.cough-mechanism { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr); gap: clamp(28px, 5vw, 62px); align-items: start; }
-.cough-anatomy { margin: 0; overflow: hidden; background: #efe5d5; border: 1px solid var(--rule); border-radius: 24px; box-shadow: var(--shadow); }
-.cough-image-stage { position: relative; aspect-ratio: 3 / 2; }
+.cough-mechanism { display: grid; gap: clamp(20px, 3vw, 30px); padding: clamp(16px, 3vw, 32px); overflow: hidden; background: rgba(255,253,248,.62); border: 1px solid var(--rule); border-radius: 28px; box-shadow: var(--shadow); }
+.cough-anatomy { position: relative; width: min(100%, 760px); min-width: 0; margin: 0 auto; }
+.cough-image-stage { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: #efe5d5; border-radius: 18px; }
 .cough-image-stage > img { width: 100%; height: auto; }
 .cough-overlay { position: absolute; z-index: 1; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
-.cough-mechanism.is-ready .cough-marker { opacity: .25; }
-.cough-mechanism[data-phase="0"] .marker-trigger,
-.cough-mechanism[data-phase="1"] .marker-brain,
-.cough-mechanism[data-phase="2"] .marker-breath,
-.cough-mechanism[data-phase="3"] .marker-air { opacity: 1; }
-.cough-anatomy figcaption { padding: 13px 18px 15px; color: var(--muted); background: rgba(255,253,248,.72); border-top: 1px solid var(--rule); font-size: .74rem; }
-.cough-marker { position: absolute; z-index: 2; display: grid; place-items: center; width: 39px; height: 39px; color: var(--white); background: var(--shirt); border: 3px solid #f9f0e3; border-radius: 50%; box-shadow: 0 0 0 2px var(--ochre), 0 5px 14px rgba(42,32,22,.2); font-size: .72rem; font-weight: 850; transform: translate(-50%, -50%); }
-.marker-trigger { left: 44%; top: 39%; }
-.marker-brain { left: 41%; top: 20%; }
-.marker-breath { left: 50%; top: 83%; }
-.marker-air { left: 58%; top: 28%; }
-.cough-sequence { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
-.cough-sequence li { border-bottom: 1px solid var(--rule); }
-.cough-sequence button { display: grid; grid-template-columns: 36px 1fr; gap: 14px; width: 100%; padding: 20px 14px; border: 0; border-radius: 12px; color: var(--ink); background: transparent; text-align: left; cursor: pointer; }
-.cough-sequence button[aria-pressed="true"] { background: rgba(255,253,248,.8); box-shadow: inset 3px 0 var(--ochre); }
-.cough-mechanism.is-ready [data-cough-step][aria-expanded="false"] .cough-step-copy { display: none; }
-.cough-step-number { display: grid; place-items: center; align-self: start; width: 34px; height: 34px; color: var(--white); background: var(--shirt); border-radius: 50%; font-size: .68rem; font-weight: 840; }
-.cough-sequence strong { display: block; margin-bottom: 7px; font-size: .98rem; font-weight: 800; line-height: 1.35; }
-.cough-step-copy { display: block; color: var(--muted); font-size: .95rem; line-height: 1.55; }
+.cough-mechanism:not(.is-ready) .cough-nav-button { display: none; }
+.cough-nav-button { z-index: 2; }
+.cough-description { width: min(100%, 760px); min-width: 0; margin: 0 auto; padding: 0 8px 6px; }
+.cough-panel[hidden] { display: none; }
+.cough-panel + .cough-panel { margin-top: 24px; }
+.cough-mechanism.is-ready .cough-panel { margin-top: 0; }
+.cough-panel h3 { font-size: clamp(1.6rem, 2.7vw, 2.3rem); }
+.cough-panel p { margin-bottom: 0; color: var(--muted); }
 .cough-takeaway { margin-top: 30px; padding: 25px 28px; color: #edf1ed; background: var(--shirt); border-radius: 18px; }
 .cough-takeaway p { margin: 0; font-size: .88rem; }
 .cough-takeaway strong { color: #fff8ed; }
@@ -627,9 +646,8 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   .wide-heading { gap: 16px; align-items: start; }
   .section { padding: 88px 0; }
   .section-heading { margin-bottom: 38px; }
-  .anatomy-explorer, .cough-mechanism { grid-template-columns: 1fr; }
-  .anatomy-map-column { position: static; display: block; width: min(100%, 340px); margin: 0 auto 34px; }
-  .cough-anatomy { max-width: 620px; margin: 0 auto; width: 100%; }
+  .cough-mechanism { grid-template-columns: 1fr; }
+  .anatomy-map-column { width: min(100%, 340px); }
   .path-copy { gap: 20px; }
   .treatment-panel { grid-template-columns: 1fr; }
   .effect-visual { min-height: 330px; }
@@ -662,15 +680,22 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   .path-copy { padding: 0 6px 10px; }
   .path-copy .visual-caption { margin-top: 0; }
   .path-copy h3 { min-height: 0; }
-  .anatomy-map-column { display: block; }
-  .atlas-stage { max-width: 290px; }
+  .anatomy-map-column { width: min(100%, 290px); }
+  .region-dialog { inset: 0; width: 100%; height: 100%; max-height: 100%; height: 100dvh; max-height: 100dvh; margin: 0; border: 0; border-radius: 0; scroll-padding-top: calc(124px + env(safe-area-inset-top, 0px)); }
+  .region-dialog-toolbar { gap: 8px; padding: calc(10px + env(safe-area-inset-top, 0px)) 10px 10px; }
+  .region-dialog-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+  .region-dialog-tabs button { padding: 9px 3px; font-size: .75rem; }
+  .region-dialog .region-panel { padding: 22px 18px calc(32px + env(safe-area-inset-bottom, 0px)); }
+  .region-dialog .anatomy-context { padding: 0 18px; margin-top: 18px; }
+  .region-dialog:not(.is-ready) { height: auto; }
   .region-panel { padding: 24px 18px; }
   .anatomy-context { margin-top: -16px; }
   .comparison-labels { gap: 12px; }
   .region-figure figcaption { padding: 12px; font-size: .76rem; }
   .comparison-labels strong { font-size: .8rem; }
   .region-facts p, .region-alert { font-size: .94rem; }
-  .cough-marker { width: 28px; height: 28px; border-width: 2px; font-size: .64rem; }
+  .cough-mechanism { padding: 12px; border-radius: 20px; }
+  .cough-description { padding: 0 6px 10px; }
   .symptom-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .treatment-copy, .effect-visual { padding: 30px 24px; }
   .effect-row { grid-template-columns: 78px 1fr; }
@@ -711,13 +736,19 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 @media print {
   body { background: #fff; color: #000; font-size: 11pt; }
   .page { width: auto; margin: 0 14mm; }
-  .skip, .back-link, .hero-actions, .section-nav, .path-nav-button, .symptom-tabs, .treatment-action, .memo-download, .atlas-hotspots { display: none !important; }
+  .skip, .back-link, .hero-actions, .section-nav, .path-nav-button, .symptom-tabs, .treatment-action, .memo-download, .atlas-hotspots, .region-dialog-toolbar { display: none !important; }
   .anatomy-explorer, .anatomy-map-column, .cough-mechanism { display: block; }
   .anatomy-map-column { position: static; max-width: 280px; margin: auto; }
   .region-panel[hidden] { display: block !important; }
+  body.region-dialog-open { overflow: visible; }
+  .region-dialog, .region-dialog.is-ready:not([open]) { display: block !important; position: static !important; width: 100%; height: auto; max-height: none; margin: 0; overflow: visible; border: 0; box-shadow: none; }
+  .region-dialog::backdrop { display: none; }
   .region-panel { break-inside: avoid; box-shadow: none; }
   .cough-mechanism.is-ready .cough-overlay > path, .cough-mechanism.is-ready .cough-overlay > g { display: inline; }
-  .cough-mechanism.is-ready .cough-marker { opacity: 1; }
+  .cough-nav-button { display: none !important; }
+  .cough-panel[hidden] { display: block !important; }
+  .cough-description { padding-top: 20px; }
+  .cough-mechanism.is-ready .cough-panel + .cough-panel { margin-top: 24px; }
   .header { min-height: 18mm; }
   .hero { min-height: auto; padding: 18mm 0 12mm; }
   .section { padding: 14mm 0; break-inside: avoid; }
@@ -727,8 +758,7 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   .evidence-list details > div,
   .region-disclosure > div,
   .recovery-disclosure > div,
-  .reason-disclosure > div,
-  .cough-step-copy { display: block !important; }
+  .reason-disclosure > div { display: block !important; }
   a { color: #000; }
   .footer { min-height: 18mm; }
 }
@@ -833,30 +863,39 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
           <div>
             <h2 id="anatomy-title">Где возникают симптомы</h2>
           </div>
-          <p>Выберите область головы или шеи. Карта показывает соседние структуры и объясняет, что именно может измениться при инфекции.</p>
         </div>
 
-        <p class="anatomy-context">Это возможные проявления одной инфекции: не все области обязательно будут затронуты.</p>
-
-        <div class="anatomy-explorer" id="anatomy-explorer" data-region="nose">
+        <div class="anatomy-explorer" id="anatomy-explorer">
           <div class="anatomy-map-column">
             <figure class="atlas-map">
               <div class="atlas-stage">
                 <img src="assets/head-neck-map.jpg" width="1024" height="1536" alt="Профиль головы и шеи взрослого. Выберите нос, глаза, ухо, область ротоглотки, гортани или шейных лимфоузлов." loading="lazy" decoding="async">
-                <div class="atlas-hotspots" role="tablist" aria-label="Области головы и шеи">
-                  <button class="atlas-hotspot hotspot-nose" type="button" role="tab" id="region-tab-nose" data-region="nose" aria-label="Нос и пазухи" aria-selected="true" aria-controls="region-panel-nose" title="Нос и пазухи"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Нос и пазухи</span></button>
-                  <button class="atlas-hotspot hotspot-eyes" type="button" role="tab" id="region-tab-eyes" data-region="eyes" aria-label="Глаза" aria-selected="false" aria-controls="region-panel-eyes" tabindex="-1" title="Глаза"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Глаза</span></button>
-                  <button class="atlas-hotspot hotspot-ear" type="button" role="tab" id="region-tab-ear" data-region="ear" aria-label="Среднее ухо" aria-selected="false" aria-controls="region-panel-ear" tabindex="-1" title="Среднее ухо"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Среднее ухо</span></button>
-                  <button class="atlas-hotspot hotspot-throat" type="button" role="tab" id="region-tab-throat" data-region="throat" aria-label="Ротоглотка" aria-selected="false" aria-controls="region-panel-throat" tabindex="-1" title="Ротоглотка"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Ротоглотка</span></button>
-                  <button class="atlas-hotspot hotspot-larynx" type="button" role="tab" id="region-tab-larynx" data-region="larynx" aria-label="Гортань и голос" aria-selected="false" aria-controls="region-panel-larynx" tabindex="-1" title="Гортань и голос"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Гортань и голос</span></button>
-                  <button class="atlas-hotspot hotspot-neck" type="button" role="tab" id="region-tab-neck" data-region="neck" aria-label="Лимфоузлы шеи" aria-selected="false" aria-controls="region-panel-neck" tabindex="-1" title="Лимфоузлы шеи"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Лимфоузлы шеи</span></button>
+                <div class="atlas-hotspots" role="group" aria-label="Выбрать область головы или шеи">
+                  <button class="atlas-hotspot hotspot-nose" type="button" id="region-open-nose" data-region="nose" aria-label="Нос и пазухи" aria-haspopup="dialog" aria-expanded="false" aria-controls="region-dialog" title="Нос и пазухи"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Нос и пазухи</span></button>
+                  <button class="atlas-hotspot hotspot-eyes" type="button" id="region-open-eyes" data-region="eyes" aria-label="Глаза" aria-haspopup="dialog" aria-expanded="false" aria-controls="region-dialog" title="Глаза"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Глаза</span></button>
+                  <button class="atlas-hotspot hotspot-ear" type="button" id="region-open-ear" data-region="ear" aria-label="Среднее ухо" aria-haspopup="dialog" aria-expanded="false" aria-controls="region-dialog" title="Среднее ухо"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Среднее ухо</span></button>
+                  <button class="atlas-hotspot hotspot-throat" type="button" id="region-open-throat" data-region="throat" aria-label="Ротоглотка" aria-haspopup="dialog" aria-expanded="false" aria-controls="region-dialog" title="Ротоглотка"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Ротоглотка</span></button>
+                  <button class="atlas-hotspot hotspot-larynx" type="button" id="region-open-larynx" data-region="larynx" aria-label="Гортань и голос" aria-haspopup="dialog" aria-expanded="false" aria-controls="region-dialog" title="Гортань и голос"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Гортань и голос</span></button>
+                  <button class="atlas-hotspot hotspot-neck" type="button" id="region-open-neck" data-region="neck" aria-label="Лимфоузлы шеи" aria-haspopup="dialog" aria-expanded="false" aria-controls="region-dialog" title="Лимфоузлы шеи"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Лимфоузлы шеи</span></button>
                 </div>
               </div>
-              <figcaption id="region-map-status" aria-live="polite">Выбрано: нос и пазухи.</figcaption>
             </figure>
           </div>
 
-          <div class="region-panels">
+          <dialog class="region-dialog" id="region-dialog" aria-label="Симптомы по областям головы и шеи">
+            <header class="region-dialog-toolbar">
+              <div class="region-dialog-tabs" role="tablist" aria-label="Области головы и шеи">
+                <button type="button" role="tab" id="region-tab-nose" data-region-tab="nose" aria-label="Нос и пазухи" aria-selected="true" aria-controls="region-panel-nose">Нос</button>
+                <button type="button" role="tab" id="region-tab-eyes" data-region-tab="eyes" aria-label="Глаза" aria-selected="false" aria-controls="region-panel-eyes" tabindex="-1">Глаза</button>
+                <button type="button" role="tab" id="region-tab-ear" data-region-tab="ear" aria-label="Среднее ухо" aria-selected="false" aria-controls="region-panel-ear" tabindex="-1">Уши</button>
+                <button type="button" role="tab" id="region-tab-throat" data-region-tab="throat" aria-label="Ротоглотка" aria-selected="false" aria-controls="region-panel-throat" tabindex="-1">Ротоглотка</button>
+                <button type="button" role="tab" id="region-tab-larynx" data-region-tab="larynx" aria-label="Гортань и голос" aria-selected="false" aria-controls="region-panel-larynx" tabindex="-1">Гортань</button>
+                <button type="button" role="tab" id="region-tab-neck" data-region-tab="neck" aria-label="Лимфоузлы шеи" aria-selected="false" aria-controls="region-panel-neck" tabindex="-1">Шея</button>
+              </div>
+              <button type="button" class="region-dialog-close" id="region-dialog-close" aria-label="Закрыть и вернуться к статье"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+            </header>
+            <p class="anatomy-context">Это возможные проявления одной инфекции: не все области обязательно будут затронуты.</p>
+            <div class="region-panels">
             <article class="region-panel" id="region-panel-nose" role="tabpanel" tabindex="0" aria-labelledby="region-tab-nose" data-region-panel="nose">
               <header class="region-panel-heading">
                 <p class="region-selected">Нос и пазухи</p>
@@ -1009,7 +1048,8 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
               </div>
               <p class="region-alert"><strong>Обратитесь к врачу,</strong> если узел продолжает расти, остаётся увеличенным дольше четырёх недель, стал твёрдым или неподвижным, находится над ключицей либо сопровождается похудением, ночной потливостью или длительной температурой.</p>
             </article>
-          </div>
+            </div>
+          </dialog>
         </div>
       </section>
 
@@ -1022,10 +1062,10 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
           <p>Кашель могут запускать раздражение и секрет в гортани, трахее и крупных бронхах. Выберите этап, чтобы проследить путь от раздражителя до выдоха.</p>
         </div>
 
-        <div class="cough-mechanism" id="cough-mechanism" data-phase="0">
+        <div class="cough-mechanism" id="cough-mechanism" data-phase="0" role="group" aria-roledescription="карусель" aria-label="Этапы кашлевого рефлекса">
           <figure class="cough-anatomy">
-            <div class="cough-image-stage">
-              <img src="assets/cough-reflex-anatomy.jpg" width="1536" height="1024" alt="Составная анатомическая схема головы, шеи и грудной клетки. Выделены дыхательные пути, ствол мозга и дыхательные мышцы — участники кашлевого рефлекса." loading="lazy" decoding="async">
+            <div class="cough-image-stage" id="cough-image-stage" role="img" aria-label="Составная анатомическая схема головы, шеи и грудной клетки. Выделены дыхательные пути, ствол мозга и дыхательные мышцы — участники кашлевого рефлекса.">
+              <img src="assets/cough-reflex-anatomy.jpg" width="1536" height="1024" alt="" aria-hidden="true" loading="lazy" decoding="async">
               <svg class="cough-overlay" viewBox="0 0 1536 1024" aria-hidden="true">
                 <defs><marker id="cough-signal-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#94602e"/></marker><marker id="cough-motor-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#496e60"/></marker><marker id="cough-air-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#365e79"/></marker></defs>
                 <g data-cough-layer="0" fill="#dfa949" fill-opacity=".3" stroke="#94602e" stroke-width="6"><ellipse cx="677" cy="405" rx="35" ry="65"/><ellipse cx="675" cy="610" rx="75" ry="42"/></g>
@@ -1043,20 +1083,17 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
                   <path d="M679 618 679 476Q651 334 820 292L1064 292" stroke="#365e79" stroke-width="12" marker-end="url(#cough-air-arrow)"/>
                 </g>
               </svg>
-              <span class="cough-marker marker-trigger" aria-hidden="true">1</span>
-              <span class="cough-marker marker-brain" aria-hidden="true">2</span>
-              <span class="cough-marker marker-breath" aria-hidden="true">3</span>
-              <span class="cough-marker marker-air" aria-hidden="true">4</span>
             </div>
-            <figcaption>Стрелки показывают направление сигнала и воздуха. Это схема связей, а не точный ход нервов.</figcaption>
+            <button type="button" id="cough-prev" class="path-nav-button cough-nav-button path-previous" aria-label="Предыдущий этап: Быстрый выдох очищает дыхательные пути" aria-controls="cough-image-stage cough-description"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6l-6 6 6 6"/></svg></button>
+            <button type="button" id="cough-next" class="path-nav-button cough-nav-button path-next" aria-label="Следующий этап: Сигнал поступает в ствол мозга" aria-controls="cough-image-stage cough-description"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6-6 6"/></svg></button>
           </figure>
 
-          <ol class="cough-sequence">
-            <li><button type="button" data-cough-step="0" aria-pressed="true" aria-expanded="true"><span class="cough-step-number">1</span><span><strong>Раздражитель включает рецепторы</strong><span class="cough-step-copy">Воспаление, слизь или другой раздражитель возбуждает чувствительные нервные окончания в гортани, трахее и крупных бронхах.</span></span></button></li>
-            <li><button type="button" data-cough-step="1" aria-pressed="false" aria-expanded="false"><span class="cough-step-number">2</span><span><strong>Сигнал поступает в ствол мозга</strong><span class="cough-step-copy">Чувствительные волокна, главным образом в составе блуждающего нерва, передают сигнал в центры управления кашлем.</span></span></button></li>
-            <li><button type="button" data-cough-step="2" aria-pressed="false" aria-expanded="false"><span class="cough-step-number">3</span><span><strong>Организм создаёт давление</strong><span class="cough-step-copy">Следует команда дыхательным мышцам: происходит вдох, голосовая щель кратко закрывается, давление в грудной клетке растёт.</span></span></button></li>
-            <li><button type="button" data-cough-step="3" aria-pressed="false" aria-expanded="false"><span class="cough-step-number">4</span><span><strong>Быстрый выдох очищает дыхательные пути</strong><span class="cough-step-copy">Голосовая щель открывается, и поток воздуха помогает вынести секрет и раздражители.</span></span></button></li>
-          </ol>
+          <div class="cough-description" id="cough-description" aria-live="polite" aria-atomic="true">
+            <section class="cough-panel" data-cough-panel="0"><h3>Раздражитель включает рецепторы</h3><p>Воспаление, слизь или другой раздражитель возбуждает чувствительные нервные окончания в гортани, трахее и крупных бронхах.</p></section>
+            <section class="cough-panel" data-cough-panel="1"><h3>Сигнал поступает в ствол мозга</h3><p>Чувствительные волокна, главным образом в составе блуждающего нерва, передают сигнал в центры управления кашлем.</p></section>
+            <section class="cough-panel" data-cough-panel="2"><h3>Организм создаёт давление</h3><p>Следует команда дыхательным мышцам: происходит вдох, голосовая щель кратко закрывается, давление в грудной клетке растёт.</p></section>
+            <section class="cough-panel" data-cough-panel="3"><h3>Быстрый выдох очищает дыхательные пути</h3><p>Голосовая щель открывается, и поток воздуха помогает вынести секрет и раздражители.</p></section>
+          </div>
         </div>
 
         <div class="cough-takeaway">
@@ -1413,40 +1450,77 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   }
 
   const anatomyExplorer = document.querySelector('#anatomy-explorer');
-  const regionMapStatus = document.querySelector('#region-map-status');
-  const regionTabs = [...document.querySelectorAll('[role="tab"][data-region]')];
+  const regionDialog = document.querySelector('#region-dialog');
+  const regionClose = document.querySelector('#region-dialog-close');
+  const regionOpeners = [...document.querySelectorAll('[data-region]')];
+  const regionTabs = [...document.querySelectorAll('[data-region-tab]')];
   const regionPanels = [...document.querySelectorAll('[data-region-panel]')];
+  let regionReturnFocus = null;
+  let articleScroll = { left: 0, top: 0 };
+  let backdropPress = false;
 
   function selectRegion(key, focusTab = false) {
-    if (!anatomyExplorer) return;
-    const selectedTab = regionTabs.find((tab) => tab.dataset.region === key);
+    const selectedTab = regionTabs.find((tab) => tab.dataset.regionTab === key);
     if (!selectedTab) return;
-
+    const changed = anatomyExplorer.dataset.region !== key;
     anatomyExplorer.dataset.region = key;
-    if (regionMapStatus) regionMapStatus.textContent = `Выбрано: ${selectedTab.getAttribute('aria-label')}.`;
-    anatomyExplorer.classList.add('is-ready');
-
+    regionDialog.setAttribute('aria-label', `${selectedTab.getAttribute('aria-label')}: симптомы при простуде`);
     regionTabs.forEach((tab) => {
-      const isSelected = tab.dataset.region === key;
+      const isSelected = tab.dataset.regionTab === key;
       tab.setAttribute('aria-selected', String(isSelected));
       tab.tabIndex = isSelected ? 0 : -1;
-      if (isSelected && focusTab) tab.focus();
+      if (isSelected && focusTab) tab.focus({ preventScroll: true });
     });
-
     regionPanels.forEach((panel) => {
       panel.hidden = panel.dataset.regionPanel !== key;
     });
+    regionOpeners.forEach((opener) => {
+      opener.setAttribute('aria-expanded', String(regionDialog.open && opener.dataset.region === key));
+    });
+    if (changed) regionDialog.scrollTop = 0;
+  }
+
+  function openRegion(opener) {
+    if (!regionTabs.some(tab => tab.dataset.regionTab === opener.dataset.region)) return;
+    if (!regionDialog.open) {
+      regionReturnFocus = opener;
+      articleScroll = { left: window.scrollX, top: window.scrollY };
+      selectRegion(opener.dataset.region);
+      document.body.classList.add('region-dialog-open');
+      regionDialog.showModal();
+    }
+    selectRegion(opener.dataset.region, true);
+    regionDialog.scrollTop = 0;
+  }
+
+  function closeRegion() {
+    if (regionDialog.open) regionDialog.close('dismiss');
+  }
+
+  function outsideRegionDialog(event) {
+    if (event.target !== regionDialog) return false;
+    const rect = regionDialog.getBoundingClientRect();
+    return event.clientX < rect.left || event.clientX > rect.right
+      || event.clientY < rect.top || event.clientY > rect.bottom;
   }
 
   const hasMatchingRegions = regionTabs.length > 0
-    && new Set(regionTabs.map(tab => tab.dataset.region)).size === regionTabs.length
+    && new Set(regionTabs.map(tab => tab.dataset.regionTab)).size === regionTabs.length
+    && new Set(regionOpeners.map(opener => opener.dataset.region)).size === regionTabs.length
+    && regionOpeners.length === regionTabs.length
     && regionPanels.length === regionTabs.length
-    && regionTabs.every(tab => regionPanels.filter(panel => panel.dataset.regionPanel === tab.dataset.region).length === 1);
+    && regionTabs.every(tab => regionPanels.filter(panel => panel.dataset.regionPanel === tab.dataset.regionTab).length === 1
+      && regionOpeners.some(opener => opener.dataset.region === tab.dataset.regionTab));
 
-  if (anatomyExplorer && hasMatchingRegions) {
+  if (anatomyExplorer && regionDialog && regionClose && hasMatchingRegions
+    && typeof regionDialog.showModal === 'function' && typeof regionDialog.close === 'function') {
+    anatomyExplorer.classList.add('is-ready');
+    regionDialog.classList.add('is-ready');
+    regionOpeners.forEach(opener => opener.addEventListener('click', () => openRegion(opener)));
     regionTabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => selectRegion(tab.dataset.region));
+      tab.addEventListener('click', () => selectRegion(tab.dataset.regionTab));
       tab.addEventListener('keydown', (event) => {
+        if (event.altKey || event.ctrlKey || event.metaKey) return;
         if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
         event.preventDefault();
         let nextIndex = index;
@@ -1454,31 +1528,85 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
         if (['ArrowLeft', 'ArrowUp'].includes(event.key)) nextIndex = (index - 1 + regionTabs.length) % regionTabs.length;
         if (event.key === 'Home') nextIndex = 0;
         if (event.key === 'End') nextIndex = regionTabs.length - 1;
-        selectRegion(regionTabs[nextIndex].dataset.region, true);
+        selectRegion(regionTabs[nextIndex].dataset.regionTab, true);
       });
     });
-
+    regionClose.addEventListener('click', closeRegion);
+    regionDialog.addEventListener('cancel', event => {
+      event.preventDefault();
+      closeRegion();
+    });
+    regionDialog.addEventListener('pointerdown', event => { backdropPress = outsideRegionDialog(event); });
+    regionDialog.addEventListener('click', event => {
+      if (backdropPress && outsideRegionDialog(event)) closeRegion();
+      backdropPress = false;
+    });
+    regionDialog.addEventListener('close', () => {
+      if (regionDialog.open) return;
+      document.body.classList.remove('region-dialog-open');
+      if (regionDialog.returnValue === 'print') return;
+      regionOpeners.forEach(opener => opener.setAttribute('aria-expanded', 'false'));
+      backdropPress = false;
+      if (!regionReturnFocus) return;
+      const opener = regionReturnFocus;
+      regionReturnFocus = null;
+      opener.focus({ preventScroll: true });
+      if (window.scrollX !== articleScroll.left || window.scrollY !== articleScroll.top) {
+        window.scrollTo({ ...articleScroll, behavior: 'instant' });
+      }
+    });
     selectRegion('nose');
   }
 
   const coughMechanism = document.querySelector('#cough-mechanism');
-  const coughSteps = [...document.querySelectorAll('[data-cough-step]')];
+  const coughPrevious = document.querySelector('#cough-prev');
+  const coughNext = document.querySelector('#cough-next');
+  const coughImage = document.querySelector('#cough-image-stage');
+  const coughPanels = [...document.querySelectorAll('[data-cough-panel]')];
   const coughLayers = [...document.querySelectorAll('[data-cough-layer]')];
-  function selectCoughStep(phase) {
+  const coughTitles = coughPanels.map(panel => panel.querySelector('h3')?.textContent.trim());
+  const coughImageDescriptions = [
+    'Выделены чувствительные нервные окончания в дыхательных путях.',
+    'Стрелка показывает передачу сигнала от дыхательных путей к стволу мозга.',
+    'Стрелка показывает команду от ствола мозга к дыхательным мышцам.',
+    'Стрелка показывает выходящий поток воздуха из дыхательных путей.'
+  ];
+  let activeCoughStep = 0;
+
+  function selectCoughStep(index) {
+    const active = (index + coughPanels.length) % coughPanels.length;
+    const phase = String(active);
+    activeCoughStep = active;
     coughMechanism.dataset.phase = phase;
-    coughSteps.forEach((button) => {
-      const active = button.dataset.coughStep === phase;
-      button.setAttribute('aria-pressed', String(active));
-      button.setAttribute('aria-expanded', String(active));
-    });
-    coughLayers.forEach((layer) => layer.setAttribute('display', layer.dataset.coughLayer === phase ? 'inline' : 'none'));
+    coughPanels.forEach(panel => { panel.hidden = panel.dataset.coughPanel !== phase; });
+    coughLayers.forEach(layer => layer.setAttribute('display', layer.dataset.coughLayer === phase ? 'inline' : 'none'));
+    coughImage.setAttribute('aria-label', coughImageDescriptions[active]);
+    coughPrevious.setAttribute('aria-label', `Предыдущий этап: ${coughTitles[(active + coughPanels.length - 1) % coughPanels.length]}`);
+    coughNext.setAttribute('aria-label', `Следующий этап: ${coughTitles[(active + 1) % coughPanels.length]}`);
   }
-  if (coughMechanism && coughSteps.length === 4 && coughLayers.length === 4) {
+  const hasCoughPanels = coughPanels.length === coughImageDescriptions.length
+    && coughLayers.length === coughPanels.length
+    && coughPanels.every((panel, index) => panel.dataset.coughPanel === String(index)
+      && coughTitles[index]
+      && coughLayers.filter(layer => layer.dataset.coughLayer === String(index)).length === 1);
+  if (coughMechanism && coughPrevious && coughNext && coughImage && hasCoughPanels) {
     coughMechanism.classList.add('is-ready');
-    coughSteps.forEach((step) => {
-      step.addEventListener('click', () => selectCoughStep(step.dataset.coughStep));
+    coughPrevious.addEventListener('click', () => selectCoughStep(activeCoughStep - 1));
+    coughNext.addEventListener('click', () => selectCoughStep(activeCoughStep + 1));
+    [coughPrevious, coughNext].forEach(button => {
+      button.addEventListener('keydown', event => {
+        if (event.altKey || event.ctrlKey || event.metaKey) return;
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        let next = activeCoughStep;
+        if (event.key === 'ArrowLeft') next -= 1;
+        if (event.key === 'ArrowRight') next += 1;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = coughPanels.length - 1;
+        selectCoughStep(next);
+      });
     });
-    selectCoughStep('0');
+    selectCoughStep(0);
   }
 
   const treatments = {
@@ -1587,15 +1715,29 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   // Reveal folded content for print and restore the reader's choices afterwards.
   if (typeof window !== 'undefined') {
     let closedBeforePrint = null;
+    let regionBeforePrint = null;
     window.addEventListener('beforeprint', () => {
       if (closedBeforePrint !== null) return;
       closedBeforePrint = [...document.querySelectorAll('details')].filter(detail => !detail.open);
       closedBeforePrint.forEach(detail => { detail.open = true; });
+      if (regionDialog && regionDialog.open && regionDialog.classList.contains('is-ready')) {
+        regionBeforePrint = { scrollTop: regionDialog.scrollTop, focus: document.activeElement };
+        regionDialog.close('print');
+        document.body.classList.remove('region-dialog-open');
+      }
     });
     window.addEventListener('afterprint', () => {
       if (closedBeforePrint === null) return;
       closedBeforePrint.forEach(detail => { detail.open = false; });
       closedBeforePrint = null;
+      if (regionBeforePrint) {
+        regionDialog.showModal();
+        document.body.classList.add('region-dialog-open');
+        if (regionBeforePrint.focus) regionBeforePrint.focus.focus({ preventScroll: true });
+        regionDialog.scrollTop = regionBeforePrint.scrollTop;
+        regionDialog.returnValue = '';
+        regionBeforePrint = null;
+      }
     });
   }
 })();
