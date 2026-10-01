@@ -1,11 +1,12 @@
 # Gleb Inside — пилот 0.5.0
 
-Статический сайт с главной страницей и тремя интерактивными объяснениями.
+Статический сайт с главной страницей и четырьмя интерактивными объяснениями.
 Само наличие этих файлов
 не подтверждает публикацию сайта.
 
 Страницы: index.html, explanations/apnea/index.html,
-explanations/chronic-pain/index.html, explanations/common-cold/index.html.
+explanations/chronic-pain/index.html, explanations/common-cold/index.html,
+explanations/inflammation/index.html.
 В папке common-cold также находится скачиваемая памятка для взрослых в PDF.
 В корне также robots.txt, .nojekyll и этот README.
 Загружать в GitHub нужно содержимое этой папки, сохраняя explanations/.
@@ -24,4 +25,6 @@ explanations/chronic-pain/index.html, explanations/common-cold/index.html.
 раздел о частых инфекциях, признаки осложнений и одностраничная PDF-памятка.
 Схемы объясняют общие механизмы и не являются персональным прогнозом.
 Страницы об апноэ и хронической боли сохранены без изменений.
+Добавлена статья о воспалении: процесс в ткани, примеры травмы, вирусного ринита,
+аллергии и ревматоидного артрита, помощь в зависимости от причины.
 Условия GitHub Pages и лимиты: https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits
