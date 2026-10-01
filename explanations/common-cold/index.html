@@ -340,6 +340,8 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 .hotspot-nose:focus-visible .hotspot-tooltip,
 .hotspot-nose[aria-selected="true"] .hotspot-tooltip { transform: translate(0, 0); }
 .hotspot-nose { left: 15%; top: 39%; }
+.hotspot-eyes { left: 21%; top: 32%; }
+.hotspot-eyes .hotspot-tooltip { top: auto; bottom: calc(100% - 2px); }
 .hotspot-ear { left: 57%; top: 39%; }
 .hotspot-throat { left: 33%; top: 54%; }
 .hotspot-larynx { left: 39%; top: 66%; }
@@ -743,7 +745,7 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
       <section class="hero" aria-labelledby="hero-title">
         <p class="kicker">Материал для взрослых</p>
         <h1 id="hero-title">Вы заболели.<br>Что происходит и как с этим справиться</h1>
-        <p class="hero-lead">Респираторный вирус попадает на слизистую, заражает часть клеток и запускает воспалительную реакцию. Разберём этот путь, а затем посмотрим, почему одна инфекция может по-разному ощущаться в носу, ушах, горле, гортани и шее.</p>
+        <p class="hero-lead">Респираторный вирус попадает на слизистую, заражает часть клеток и запускает воспалительную реакцию. Разберём этот путь, а затем посмотрим, почему одна инфекция может по-разному ощущаться в носу, глазах, ушах, горле, гортани и шее.</p>
         <p class="scope-note">Учебное объяснение, а не диагностика. Рекомендации для детей и беременных отличаются.</p>
       </section>
 
@@ -845,9 +847,10 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
           <div class="anatomy-map-column">
             <figure class="atlas-map">
               <div class="atlas-stage">
-                <img src="assets/head-neck-map.jpg" width="1024" height="1536" alt="Профиль головы и шеи взрослого. Выберите нос, ухо, область ротоглотки, гортани или шейных лимфоузлов." loading="lazy" decoding="async">
+                <img src="assets/head-neck-map.jpg" width="1024" height="1536" alt="Профиль головы и шеи взрослого. Выберите нос, глаза, ухо, область ротоглотки, гортани или шейных лимфоузлов." loading="lazy" decoding="async">
                 <div class="atlas-hotspots" role="tablist" aria-label="Области головы и шеи">
                   <button class="atlas-hotspot hotspot-nose" type="button" role="tab" id="region-tab-nose" data-region="nose" aria-label="Нос и пазухи" aria-selected="true" aria-controls="region-panel-nose" title="Нос и пазухи"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Нос и пазухи</span></button>
+                  <button class="atlas-hotspot hotspot-eyes" type="button" role="tab" id="region-tab-eyes" data-region="eyes" aria-label="Глаза" aria-selected="false" aria-controls="region-panel-eyes" tabindex="-1" title="Глаза"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Глаза</span></button>
                   <button class="atlas-hotspot hotspot-ear" type="button" role="tab" id="region-tab-ear" data-region="ear" aria-label="Среднее ухо" aria-selected="false" aria-controls="region-panel-ear" tabindex="-1" title="Среднее ухо"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Среднее ухо</span></button>
                   <button class="atlas-hotspot hotspot-throat" type="button" role="tab" id="region-tab-throat" data-region="throat" aria-label="Ротоглотка" aria-selected="false" aria-controls="region-panel-throat" tabindex="-1" title="Ротоглотка"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Ротоглотка</span></button>
                   <button class="atlas-hotspot hotspot-larynx" type="button" role="tab" id="region-tab-larynx" data-region="larynx" aria-label="Гортань и голос" aria-selected="false" aria-controls="region-panel-larynx" tabindex="-1" title="Гортань и голос"><span class="hotspot-dot" aria-hidden="true"></span><span class="hotspot-tooltip" aria-hidden="true">Гортань и голос</span></button>
@@ -908,6 +911,41 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
                 </details>
               </div>
               <p class="region-alert"><strong>Обратитесь к врачу,</strong> если за 10 дней нет улучшения, после улучшения снова стало хуже или появилась выраженная односторонняя боль. <strong>Срочно обращайтесь за помощью</strong> при отёке вокруг глаза, двоении или ухудшении зрения.</p>
+            </article>
+
+            <article class="region-panel" id="region-panel-eyes" role="tabpanel" tabindex="0" aria-labelledby="region-tab-eyes" data-region-panel="eyes">
+              <header class="region-panel-heading">
+                <p class="region-selected">Глаза</p>
+                <h3>Конъюнктивит</h3>
+                <p>Некоторые респираторные вирусы, особенно аденовирусы, могут вызывать воспаление конъюнктивы — тонкой оболочки, покрывающей белок глаза и внутреннюю поверхность век. Поэтому вместе с насморком и болью в горле иногда краснеют и слезятся глаза.</p>
+              </header>
+              <figure class="region-figure">
+                <div class="region-image-frame comparison-image"><img src="assets/conjunctivitis-comparison.jpg" width="1536" height="1024" alt="Один и тот же глаз в двух состояниях: слева без воспаления, справа — покраснение конъюнктивы, заметные поверхностные сосуды и небольшая припухлость век. Роговица остаётся прозрачной." loading="lazy" decoding="async"></div>
+                <figcaption class="comparison-labels"><span><strong>Без воспаления</strong></span><span><strong>При конъюнктивите</strong></span></figcaption>
+              </figure>
+              <div class="region-facts single-fact">
+                <article>
+                  <p><strong>Как проявляется.</strong> Покраснение, слезотечение, жжение или ощущение «песка». Часто начинается с одного глаза, а через несколько дней присоединяется второй.</p>
+                  <p>По одному виду глаза нельзя надёжно отличить вирусную причину от бактериальной, аллергии или другого заболевания.</p>
+                </article>
+              </div>
+              <div class="region-facts region-disclosures">
+                <details class="region-disclosure">
+                  <summary><strong>Что поможет</strong></summary>
+                  <div class="region-disclosure-body">
+                    <p>Прохладный чистый компресс и капли «искусственная слеза» могут облегчить дискомфорт. Антибиотики не лечат вирусный конъюнктивит.</p>
+                    <p>Не трите глаза, чаще мойте руки и пользуйтесь отдельным полотенцем: инфекция легко передаётся через руки и предметы.</p>
+                    <p>Снимите контактные линзы и не носите их до выздоровления. Возобновление ношения после осмотра обсудите с врачом.</p>
+                  </div>
+                </details>
+                <details class="region-disclosure">
+                  <summary><strong>Как долго это длится</strong></summary>
+                  <div class="region-disclosure-body">
+                    <p>Вирусный конъюнктивит обычно проходит за 1–2 недели, иногда сохраняется 2–3 недели или дольше. Если за неделю нет улучшения, нужен осмотр; при ухудшении обратитесь раньше.</p>
+                  </div>
+                </details>
+              </div>
+              <p class="region-alert"><strong>Обратитесь за срочной помощью,</strong> если есть боль в глазу, светобоязнь, ухудшение зрения или очень сильная краснота. <strong>Если вы носите контактные линзы и глаз покраснел,</strong> снимите линзы и обратитесь к врачу в тот же день.</p>
             </article>
 
             <article class="region-panel" id="region-panel-ear" role="tabpanel" tabindex="0" aria-labelledby="region-tab-ear" data-region-panel="ear">
@@ -1241,6 +1279,7 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
               <li>после улучшения снова усилились температура, кашель или слабость;</li>
               <li>кашель длится больше трёх недель;</li>
               <li>появились сильная боль в ухе, выделения из уха, односторонняя боль или отёк лица;</li>
+              <li>боль в глазу, светобоязнь или ухудшение зрения требуют срочного осмотра — не ждите, пока пройдёт простуда;</li>
               <li>ухудшилось хроническое заболевание.</li>
             </ul>
           </article>
@@ -1296,8 +1335,13 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
             <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8656143/" target="_blank" rel="noopener noreferrer">Systematic review: sleep duration and respiratory infections <span aria-hidden="true">↗</span></a></li>
             <li><a href="https://www.cdc.gov/tobacco/patient-care/care-settings/pdfs/cdc-osh-hcp-pulmonology-factsheet-508.pdf" target="_blank" rel="noopener noreferrer">CDC: Smoking and Respiratory Disease <span aria-hidden="true">↗</span></a></li>
             <li><a href="https://rnmot.org/images/video/repository/klinicheskie_rekomendacii_orvi_10102023_801a37eb.pdf" target="_blank" rel="noopener noreferrer">Клинические рекомендации «ОРВИ у взрослых», 2024 <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.cdc.gov/conjunctivitis/hcp/clinical-overview/index.html" target="_blank" rel="noopener noreferrer">CDC: конъюнктивит и респираторные инфекции <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.cdc.gov/conjunctivitis/signs-symptoms/index.html" target="_blank" rel="noopener noreferrer">CDC: симптомы конъюнктивита <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.cdc.gov/conjunctivitis/treatment/index.html" target="_blank" rel="noopener noreferrer">CDC: помощь при конъюнктивите и сроки восстановления <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.nhs.uk/conditions/conjunctivitis/" target="_blank" rel="noopener noreferrer">NHS: конъюнктивит — уход и поводы для осмотра <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://www.nhs.uk/symptoms/red-eye/" target="_blank" rel="noopener noreferrer">NHS: красный глаз и срочные симптомы <span aria-hidden="true">↗</span></a></li>
           </ol>
-          <p class="source-date">Источники проверены 30 сентября 2026 года. Медицинский текст требует проверки автором перед публикацией.</p>
+          <p class="source-date">Основные источники проверены 30 сентября 2026 года; раздел о конъюнктивите — 1 октября 2026 года. Медицинский текст требует проверки автором перед публикацией.</p>
         </div>
       </details>
     </main>
@@ -1394,7 +1438,12 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
     });
   }
 
-  if (anatomyExplorer && regionTabs.length === 5 && regionPanels.length === 5) {
+  const hasMatchingRegions = regionTabs.length > 0
+    && new Set(regionTabs.map(tab => tab.dataset.region)).size === regionTabs.length
+    && regionPanels.length === regionTabs.length
+    && regionTabs.every(tab => regionPanels.filter(panel => panel.dataset.regionPanel === tab.dataset.region).length === 1);
+
+  if (anatomyExplorer && hasMatchingRegions) {
     regionTabs.forEach((tab, index) => {
       tab.addEventListener('click', () => selectRegion(tab.dataset.region));
       tab.addEventListener('keydown', (event) => {
