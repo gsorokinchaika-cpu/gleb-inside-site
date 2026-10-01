@@ -209,16 +209,15 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   border-radius: 28px;
   box-shadow: var(--shadow);
 }
-.path-card { display: flex; flex-direction: column; }
+.path-card { display: grid; gap: clamp(20px, 3vw, 30px); padding: clamp(16px, 3vw, 32px); }
 .path-visual {
+  position: relative;
   min-width: 0;
-  margin: 0;
-  padding: clamp(20px, 4vw, 38px);
-  background: #efe5d5;
-  border-bottom: 1px solid var(--rule);
+  width: min(100%, 760px);
+  margin: 0 auto;
 }
 .onset-image-window {
-  width: min(100%, 700px);
+  width: 100%;
   aspect-ratio: 3 / 2;
   margin: 0 auto;
   overflow: hidden;
@@ -236,7 +235,6 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 .path-card[data-step="1"] .onset-image-window img { transform: translate(-50%, 0); }
 .path-card[data-step="2"] .onset-image-window img { transform: translate(0, -50%); }
 .path-card[data-step="3"] .onset-image-window img { transform: translate(-50%, -50%); }
-.micro-caption { margin: 12px 0 0; color: var(--muted); font-size: .78rem; font-weight: 650; text-align: center; }
 .visual-caption { display: flex; flex-wrap: wrap; gap: 7px 14px; margin: 0; color: var(--muted); font-size: .7rem; }
 .visual-caption span { display: inline-flex; align-items: center; gap: 6px; }
 .legend { width: 9px; height: 9px; border-radius: 50%; }
@@ -244,28 +242,29 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 .immune-dot { background: #b9a1c2; }
 .vessel-dot { background: #934c41; }
 .nerve-dot { background: #b88734; }
-.path-copy { display: grid; width: min(100%, 760px); gap: 20px; margin: 0 auto; padding: clamp(26px, 4vw, 42px); }
-.path-step-list { display: flex; justify-content: center; gap: 10px; margin: 0; padding: 0; list-style: none; }
-.path-card:not(.is-ready) .path-step-list { display: none; }
-.path-step-list li { margin: 0; }
-.path-step-list button {
+.path-copy { display: grid; width: min(100%, 760px); gap: 20px; margin: 0 auto; padding: 0 8px 6px; }
+.path-card:not(.is-ready) .path-nav-button { display: none; }
+.path-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   padding: 0;
-  color: var(--muted);
-  background: transparent;
+  color: var(--ink);
+  background: rgba(246, 237, 223, .94);
   border: 1px solid var(--rule);
   border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(37, 38, 33, .06);
   cursor: pointer;
-  font-size: .75rem;
-  font-weight: 780;
 }
-.path-step-list button:hover { border-color: var(--ochre); }
-.path-step-list button:focus-visible { outline: 3px solid rgba(148,96,46,.34); outline-offset: 2px; }
-.path-step-list button[aria-current="step"],
-.path-step-list button[aria-pressed="true"] { color: var(--white); background: var(--shirt); border-color: var(--shirt); }
+.path-previous { left: 10px; }
+.path-next { right: 10px; }
+.path-nav-button:hover { background: var(--paper); border-color: var(--ochre); color: var(--ochre); }
+.path-nav-button:focus-visible { outline: 3px solid var(--ochre); outline-offset: 2px; }
+.path-nav-button svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .path-description { min-width: 0; }
 .path-description > p:last-child { margin-bottom: 0; color: var(--muted); }
 .path-copy h3 { font-size: clamp(1.6rem, 2.7vw, 2.3rem); }
@@ -628,7 +627,6 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   .wide-heading { gap: 16px; align-items: start; }
   .section { padding: 88px 0; }
   .section-heading { margin-bottom: 38px; }
-  .path-visual { padding: 24px; }
   .anatomy-explorer, .cough-mechanism { grid-template-columns: 1fr; }
   .anatomy-map-column { position: static; display: block; width: min(100%, 340px); margin: 0 auto 34px; }
   .cough-anatomy { max-width: 620px; margin: 0 auto; width: 100%; }
@@ -656,9 +654,13 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   .note { padding: 22px; }
   .path-card, .treatment-card { border-radius: 20px; }
   .voice-mechanism { padding: 26px 22px; border-radius: 20px; }
-  .path-visual { padding: 20px 16px; }
+  .path-card { padding: 12px; }
+  .path-nav-button { width: 44px; height: 44px; }
+  .path-previous { left: 6px; }
+  .path-next { right: 6px; }
   .visual-caption { gap: 7px 12px; margin-top: 18px; }
-  .path-copy { padding: 30px 24px; }
+  .path-copy { padding: 0 6px 10px; }
+  .path-copy .visual-caption { margin-top: 0; }
   .path-copy h3 { min-height: 0; }
   .anatomy-map-column { display: block; }
   .atlas-stage { max-width: 290px; }
@@ -709,7 +711,7 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
 @media print {
   body { background: #fff; color: #000; font-size: 11pt; }
   .page { width: auto; margin: 0 14mm; }
-  .skip, .back-link, .hero-actions, .section-nav, .path-step-list, .symptom-tabs, .treatment-action, .memo-download, .atlas-hotspots { display: none !important; }
+  .skip, .back-link, .hero-actions, .section-nav, .path-nav-button, .symptom-tabs, .treatment-action, .memo-download, .atlas-hotspots { display: none !important; }
   .anatomy-explorer, .anatomy-map-column, .cough-mechanism { display: block; }
   .anatomy-map-column { position: static; max-width: 280px; margin: auto; }
   .region-panel[hidden] { display: block !important; }
@@ -720,7 +722,6 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   .hero { min-height: auto; padding: 18mm 0 12mm; }
   .section { padding: 14mm 0; break-inside: avoid; }
   .path-card, .treatment-card, .memo { box-shadow: none; break-inside: avoid; }
-  .path-visual { padding: 8mm; }
   .treatment-panel, .definition-grid, .wide-heading, .voice-layout, .recovery-grid, .help-grid, .memo { grid-template-columns: 1fr; }
   .effect-visual, .warning-pattern, .memo, .emergency { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .evidence-list details > div,
@@ -787,22 +788,16 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
           <p>Вирус достигает слизистой с вдыхаемыми частицами или через руки, которыми человек касается носа, рта или глаз. Дальнейшие симптомы во многом создаёт местная иммунная реакция.</p>
         </div>
 
-        <div class="path-card" id="path-card" data-step="0">
+        <div class="path-card" id="path-card" data-step="0" role="group" aria-roledescription="карусель" aria-label="Этапы начала простуды">
           <figure class="path-visual">
             <div class="onset-image-window" id="path-visual-stage" role="img" aria-label="Вирусные частицы достигают поверхности слизистой.">
               <img src="assets/cold-onset-mucosa-v2.jpg" width="1536" height="1024" alt="" aria-hidden="true" decoding="async">
             </div>
-            <figcaption class="micro-caption">Слизистая под увеличением</figcaption>
+            <button type="button" id="path-prev" class="path-nav-button path-previous" aria-label="Предыдущий этап: возникают симптомы" aria-controls="path-visual-stage path-description"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6l-6 6 6 6"/></svg></button>
+            <button type="button" id="path-next" class="path-nav-button path-next" aria-label="Следующий этап: вирус прикрепляется к клеткам" aria-controls="path-visual-stage path-description"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6-6 6"/></svg></button>
           </figure>
 
           <div class="path-copy">
-            <ol class="path-step-list" aria-label="Этапы начала простуды">
-              <li><button type="button" data-path-step="0" aria-current="step" aria-controls="path-description" aria-label="Этап 1: вирус достигает слизистой" title="Вирус достигает слизистой">1</button></li>
-              <li><button type="button" data-path-step="1" aria-controls="path-description" aria-label="Этап 2: вирус проникает в клетки" title="Вирус проникает в клетки">2</button></li>
-              <li><button type="button" data-path-step="2" aria-controls="path-description" aria-label="Этап 3: клетки подают сигнал" title="Клетки подают сигнал">3</button></li>
-              <li><button type="button" data-path-step="3" aria-controls="path-description" aria-label="Этап 4: возникают симптомы" title="Возникают симптомы">4</button></li>
-            </ol>
-
             <div class="path-description" id="path-description" aria-live="polite">
               <h3 id="path-step-title">Вирус достигает слизистой</h3>
               <p id="path-step-text">Частицы с вирусом достигают слизистой с воздухом или через руки при касании носа, рта и глаз.</p>
@@ -1373,40 +1368,45 @@ h3 { margin-bottom: 10px; font-size: 1.48rem; }
   const pathTitle = document.querySelector('#path-step-title');
   const pathText = document.querySelector('#path-step-text');
   const pathVisual = document.querySelector('#path-visual-stage');
-  const pathButtons = [...document.querySelectorAll('[data-path-step]')];
+  const pathPrevious = document.querySelector('#path-prev');
+  const pathNext = document.querySelector('#path-next');
   const pathVisualDescriptions = [
-    'Слизистая под увеличением: вирусные частицы достигают слизи над ресничками эпителия.',
+    'Вирусные частицы достигают слизи над ресничками эпителия.',
     'Вирус прикрепляется к поверхности эпителиальной клетки и размножается внутри неё.',
     'Сигнальные вещества и иммунные клетки в ткани под эпителием.',
     'Воспалительная реакция слизистой: секрета и иммунных клеток становится больше.'
   ];
 
-  function setPathStep(index, focusButton = false) {
-    const active = Math.max(0, Math.min(pathSteps.length - 1, index));
+  let activePathStep = 0;
+
+  function setPathStep(index) {
+    const active = (index + pathSteps.length) % pathSteps.length;
+    activePathStep = active;
     pathCard.dataset.step = String(active);
     pathTitle.textContent = pathSteps[active].title;
     pathText.textContent = pathSteps[active].text;
-    if (pathVisual) pathVisual.setAttribute('aria-label', pathVisualDescriptions[active]);
-    pathButtons.forEach((button, buttonIndex) => {
-      if (buttonIndex === active) button.setAttribute('aria-current', 'step');
-      else button.removeAttribute('aria-current');
-      if (buttonIndex === active && focusButton) button.focus();
-    });
+    pathVisual.setAttribute('aria-label', pathVisualDescriptions[active]);
+    const previous = (active + pathSteps.length - 1) % pathSteps.length;
+    const next = (active + 1) % pathSteps.length;
+    pathPrevious.setAttribute('aria-label', `Предыдущий этап: ${pathSteps[previous].title}`);
+    pathNext.setAttribute('aria-label', `Следующий этап: ${pathSteps[next].title}`);
   }
 
-  if (pathCard && pathTitle && pathText && pathButtons.length === pathSteps.length) {
+  if (pathCard && pathTitle && pathText && pathVisual && pathPrevious && pathNext) {
     pathCard.classList.add('is-ready');
-    pathButtons.forEach((button, index) => {
-      button.addEventListener('click', () => setPathStep(index));
+    pathPrevious.addEventListener('click', () => setPathStep(activePathStep - 1));
+    pathNext.addEventListener('click', () => setPathStep(activePathStep + 1));
+    [pathPrevious, pathNext].forEach((button) => {
       button.addEventListener('keydown', (event) => {
+        if (event.altKey || event.ctrlKey || event.metaKey) return;
         if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
         event.preventDefault();
-        let next = index;
-        if (event.key === 'ArrowRight') next = (index + 1) % pathButtons.length;
-        if (event.key === 'ArrowLeft') next = (index - 1 + pathButtons.length) % pathButtons.length;
+        let next = activePathStep;
+        if (event.key === 'ArrowRight') next += 1;
+        if (event.key === 'ArrowLeft') next -= 1;
         if (event.key === 'Home') next = 0;
-        if (event.key === 'End') next = pathButtons.length - 1;
-        setPathStep(next, true);
+        if (event.key === 'End') next = pathSteps.length - 1;
+        setPathStep(next);
       });
     });
     setPathStep(0);
