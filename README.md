@@ -1,13 +1,13 @@
 # Gleb Inside — пилот 0.5.0
 
-Статический сайт с главной страницей и шестью интерактивными объяснениями.
+Статический сайт с главной страницей и семью интерактивными объяснениями.
 Само наличие этих файлов
 не подтверждает публикацию сайта.
 
 Страницы: index.html, explanations/apnea/index.html,
 explanations/chronic-pain/index.html, explanations/common-cold/index.html,
 explanations/inflammation/index.html, explanations/bppv/index.html,
-explanations/iron-deficiency/index.html.
+explanations/iron-deficiency/index.html, explanations/influenza/index.html.
 В папке common-cold также находится скачиваемая памятка для взрослых в PDF.
 В корне также robots.txt, .nojekyll и этот README.
 Загружать в GitHub нужно содержимое этой папки, сохраняя explanations/.
@@ -34,3 +34,6 @@ explanations/iron-deficiency/index.html.
 
 Добавлена статья о железодефиците с анемией и без неё: обмен и хранение железа,
 гепсидин, учебные примеры анализов, поиск причины и подходы к восполнению.
+
+Добавлена статья о гриппе: заражение и развитие симптомов, лечение,
+профилактика и подробный раздел о вакцинации. Есть ссылка на статью о простуде.
