@@ -1,12 +1,13 @@
 # Gleb Inside — пилот 0.5.0
 
-Статический сайт с главной страницей и десятью интерактивными объяснениями.
+Статический сайт с главной страницей и одиннадцатью интерактивными объяснениями.
 Само наличие этих файлов
 не подтверждает публикацию сайта.
 
 Страницы: index.html, explanations/apnea/index.html,
 explanations/chronic-pain/index.html, explanations/common-cold/index.html,
 explanations/frequent-colds/index.html, explanations/alopecia/index.html,
+explanations/fatigue/index.html,
 explanations/inflammation/index.html, explanations/bppv/index.html,
 explanations/iron-deficiency/index.html, explanations/influenza/index.html,
 explanations/h-pylori/index.html.
@@ -50,3 +51,6 @@ explanations/h-pylori/index.html.
 
 Добавлена статья о выпадении волос и алопеции: цикл волос, различия типов,
 диагностический маршрут, адресные обследования и подходы к помощи.
+
+Добавлена статья об общей слабости и усталости: клеточная энергия, сон,
+полноценное питание, физическая активность, тревога, депрессия и врачебная оценка.
