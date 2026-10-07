@@ -1,12 +1,12 @@
 # Gleb Inside — пилот 0.5.0
 
-Статический сайт с главной страницей и девятью интерактивными объяснениями.
+Статический сайт с главной страницей и десятью интерактивными объяснениями.
 Само наличие этих файлов
 не подтверждает публикацию сайта.
 
 Страницы: index.html, explanations/apnea/index.html,
 explanations/chronic-pain/index.html, explanations/common-cold/index.html,
-explanations/frequent-colds/index.html,
+explanations/frequent-colds/index.html, explanations/alopecia/index.html,
 explanations/inflammation/index.html, explanations/bppv/index.html,
 explanations/iron-deficiency/index.html, explanations/influenza/index.html,
 explanations/h-pylori/index.html.
@@ -47,3 +47,6 @@ explanations/h-pylori/index.html.
 Добавлена отдельная статья «Почему я часто болею?»: повторные простуды,
 восстановление и способы болеть реже. В статье о простуде оставлен разбор мифа
 о «слабом иммунитете» со ссылкой на новый материал.
+
+Добавлена статья о выпадении волос и алопеции: цикл волос, различия типов,
+диагностический маршрут, адресные обследования и подходы к помощи.
